@@ -62,6 +62,64 @@ export const site = {
   cta: "Enrol Now",
   brochureUrl: "", // e.g. "/brochure.pdf" — hide the Download Brochure button while empty
 
+  seo: {
+    title: "Rahul Hair Academy | Professional Hair Courses & Premium Salon in [CITY]",
+    description:
+      "Where Passion Meets Hair Education. Professional hair courses from Basic to Advanced, plus a premium salon. Learn. Create. Master Hair — enrol at Rahul Hair Academy.",
+    keywords:
+      "hair academy, hair courses, hair salon, hair cutting course, colouring course, bridal hairstyling, barbering, Rahul Hair Academy",
+    themeColorDark: "#0B0B0B",
+    themeColorLight: "#FFFFFF",
+  },
+
+  nav: [
+    { id: "home", label: "Home" },
+    { id: "academy", label: "Academy" },
+    { id: "courses", label: "Courses" },
+    { id: "salon", label: "Salon" },
+    { id: "gallery", label: "Gallery" },
+    { id: "reviews", label: "Reviews" },
+    { id: "contact", label: "Contact" },
+  ],
+
+  ui: {
+    enrolNow: "Enrol Now",
+    bookSalon: "Book Salon",
+    bookAppointment: "Book Salon Appointment",
+    exploreCourses: "Explore Courses",
+    viewSyllabus: "View Syllabus",
+    bookThis: "Book this",
+    followIg: "Follow on Instagram",
+    downloadBrochure: "Download Brochure",
+    scroll: "Scroll",
+    backToTop: "Back to top",
+    call: "Call",
+    whatsapp: "WhatsApp",
+    email: "Email",
+    whatYoullLearn: "What you’ll learn",
+    kitIncluded: "Kit included",
+    certificate: "Certificate",
+    addToCalendar: "Add to Calendar",
+    googleCalendar: "Google Calendar",
+    downloadIcs: "Download .ics",
+    next: "Next",
+    back: "Back",
+    submitEnquiry: "Send Enquiry",
+    requestAppointment: "Request Appointment",
+    studentReviews: "Student Reviews",
+    salonReviews: "Salon Client Reviews",
+    faqAcademy: "Academy",
+    faqSalon: "Salon",
+    trustedBy: "Trusted by students",
+    moreComing: "More transformations coming",
+    playReel: "Play reel",
+    close: "Close",
+    menu: "Menu",
+    themeLight: "Switch to light theme",
+    themeDark: "Switch to dark theme",
+    dmInstagram: "DM on Instagram",
+  },
+
   instagram: {
     handle: "@rahul_hairacademy",
     url: "https://www.instagram.com/rahul_hairacademy/",
@@ -107,9 +165,9 @@ export const site = {
       "Certificate on Completion [CONFIRM]",
     ],
     slideshow: [
-      { src: heroSalon, alt: "Luxury salon interior with golden lighting" },
-      { src: heroStyling, alt: "Stylist blow-drying shiny hair" },
-      { src: heroClassroom, alt: "Students practising at the hair academy" },
+      { src: heroSalon, alt: "Luxury salon interior with golden lighting", isStock: true }, // REPLACE WITH CLIENT PHOTO
+      { src: heroStyling, alt: "Stylist blow-drying shiny hair", isStock: true }, // REPLACE WITH CLIENT PHOTO
+      { src: heroClassroom, alt: "Students practising at the hair academy", isStock: true }, // REPLACE WITH CLIENT PHOTO
     ],
   },
 
@@ -173,6 +231,7 @@ export const site = {
         title: "Basic Hair Cutting & Styling",
         level: "beginner",
         image: courseCutting,
+        isStock: true, // REPLACE WITH CLIENT PHOTO
         duration: "[DURATION]",
         mode: "[OFFLINE / ONLINE — CONFIRM]",
         fee: "[FEE]",
@@ -193,6 +252,7 @@ export const site = {
         title: "Advanced Hair Cutting & Trends",
         level: "advanced",
         image: courseCutting, // REPLACE WITH CLIENT PHOTO
+        isStock: true, // REPLACE WITH CLIENT PHOTO
         duration: "[DURATION]",
         mode: "[OFFLINE / ONLINE — CONFIRM]",
         fee: "[FEE]",
@@ -213,6 +273,7 @@ export const site = {
         title: "Hair Colouring & Highlights",
         level: "advanced",
         image: courseColour,
+        isStock: true, // REPLACE WITH CLIENT PHOTO
         duration: "[DURATION]",
         mode: "[OFFLINE / ONLINE — CONFIRM]",
         fee: "[FEE]",
@@ -233,6 +294,7 @@ export const site = {
         title: "Hair Treatments: Keratin, Smoothening & Spa",
         level: "professional",
         image: courseTreatments,
+        isStock: true, // REPLACE WITH CLIENT PHOTO
         duration: "[DURATION]",
         mode: "[OFFLINE / ONLINE — CONFIRM]",
         fee: "[FEE]",
@@ -253,6 +315,7 @@ export const site = {
         title: "Bridal & Party Hairstyling",
         level: "advanced",
         image: courseBridal,
+        isStock: true, // REPLACE WITH CLIENT PHOTO
         duration: "[DURATION]",
         mode: "[OFFLINE / ONLINE — CONFIRM]",
         fee: "[FEE]",
@@ -273,6 +336,7 @@ export const site = {
         title: "Men’s Grooming & Barbering",
         level: "beginner",
         image: courseBarbering,
+        isStock: true, // REPLACE WITH CLIENT PHOTO
         duration: "[DURATION]",
         mode: "[OFFLINE / ONLINE — CONFIRM]",
         fee: "[FEE]",
@@ -293,6 +357,7 @@ export const site = {
         title: "Master Professional Course",
         level: "professional",
         image: courseMaster,
+        isStock: true, // REPLACE WITH CLIENT PHOTO
         duration: "[DURATION]",
         mode: "[OFFLINE / ONLINE — CONFIRM]",
         fee: "[FEE]",
@@ -315,6 +380,7 @@ export const site = {
         title: "Salon Business & Entrepreneurship",
         level: "crash",
         image: courseBusiness,
+        isStock: true, // REPLACE WITH CLIENT PHOTO
         duration: "[DURATION]",
         mode: "[OFFLINE / ONLINE — CONFIRM]",
         fee: "[FEE]",
@@ -349,10 +415,10 @@ export const site = {
     label: "YOUR LEARNING JOURNEY",
     title: "01 → 04, one stage at a time",
     stages: [
-      { no: "01", title: "Learn the Basics", text: "Tools, hygiene and sectioning — the grammar of great hair.", image: journeyBasics },
-      { no: "02", title: "Practice on Live Models", text: "Real clients under trainer supervision until your hands are sure.", image: journeyModel },
-      { no: "03", title: "Create Your Style", text: "Design, experiment and build looks that carry your signature.", image: journeyCreate },
-      { no: "04", title: "Master & Get Certified", text: "Graduate with a certificate and a portfolio that gets you hired.", image: journeyCertified },
+      { no: "01", title: "Learn the Basics", text: "Tools, hygiene and sectioning — the grammar of great hair.", image: journeyBasics, isStock: true }, // REPLACE WITH CLIENT PHOTO
+      { no: "02", title: "Practice on Live Models", text: "Real clients under trainer supervision until your hands are sure.", image: journeyModel, isStock: true },
+      { no: "03", title: "Create Your Style", text: "Design, experiment and build looks that carry your signature.", image: journeyCreate, isStock: true },
+      { no: "04", title: "Master & Get Certified", text: "Graduate with a certificate and a portfolio that gets you hired.", image: journeyCertified, isStock: true },
     ],
   },
 
@@ -383,7 +449,7 @@ export const site = {
     label: "TRANSFORMATIONS",
     title: "Before / After",
     // Add real client pairs: { before, after, caption }
-    items: [], // [CLIENT TO SEND BEFORE/AFTER PHOTOS]
+    items: [] as { before: string; after: string; caption: string }[], // [CLIENT TO SEND BEFORE/AFTER PHOTOS]
     emptyNote: "More transformations coming — real client results will appear here.",
   },
 
@@ -437,17 +503,17 @@ export const site = {
     title: "Masters Behind the Chair",
     members: [
       {
-        name: site.founderPlaceholderDontUse ?? "Rahul [FOUNDER FULL NAME]",
+        name: "Rahul [FOUNDER FULL NAME]",
         role: "Founder & Master Educator",
         specialities: "Cutting • Colour • Education",
-        instagram: site.instagram.url,
+        instagram: "https://www.instagram.com/rahul_hairacademy/",
         photo: ig6, // REPLACE WITH CLIENT PORTRAIT
       },
       {
         name: "[TRAINER NAME — CONFIRM]",
         role: "Senior Trainer [CONFIRM]",
         specialities: "[SPECIALITIES]",
-        instagram: site.instagram.url,
+        instagram: "https://www.instagram.com/rahul_hairacademy/",
         photo: "", // no stock photos in instructor slots — brand monogram shown until photo provided
       },
     ],
@@ -493,7 +559,7 @@ export const site = {
     successText: "Final confirmation on WhatsApp.",
   },
 
-  instagram: {
+  igSection: {
     label: "INSTAGRAM",
     title: "Follow the Craft",
     // Reels: client adds { video, poster, igUrl, caption }. Videos go in /public/videos/.
@@ -541,5 +607,9 @@ export const site = {
   },
 } as const;
 
-/* Satisfy TS on the self-reference above */
-declare const _founderRef: never;
+export type Course = (typeof site.courses.items)[number];
+export type GalleryItem = (typeof site.gallery.items)[number];
+export type HighlightItem = (typeof site.highlights.items)[number];
+export type TeamMember = (typeof site.team.members)[number];
+export type JourneyStage = (typeof site.journey.stages)[number];
+export type NavItem = (typeof site.nav)[number];
