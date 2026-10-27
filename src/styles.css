@@ -821,7 +821,7 @@ html.light .btn-outline-gold:hover {
   html .btn-gold,
   html .btn-outline-gold,
   html .btn-ghost-gold {
-    cursor: url("/cursors/scissors-light.png") 24 2, auto;
+    cursor: url("/cursors/scissors-light.png") 30 0, auto;
   }
   html.light,
   html.light body,
@@ -832,7 +832,7 @@ html.light .btn-outline-gold:hover {
   html.light .btn-gold,
   html.light .btn-outline-gold,
   html.light .btn-ghost-gold {
-    cursor: url("/cursors/scissors-dark.png") 24 2, auto;
+    cursor: url("/cursors/scissors-dark.png") 30 0, auto;
   }
   html input,
   html textarea,
