@@ -3,7 +3,7 @@ import { site } from "@/content";
 export function Marquee() {
   const items = [...site.marquee, ...site.marquee];
   return (
-    <div className="relative overflow-hidden border-y border-[var(--border)] bg-[var(--surface)] py-4">
+    <div className="relative overflow-hidden border-y border-[var(--border)] bg-[var(--surface)] py-2.5">
       <div className="marquee-track gap-8 px-4">
         {items.map((item, i) => (
           <span

@@ -10,17 +10,17 @@ export function FAQ() {
   const items = tab === "academy" ? site.faq.academy : site.faq.salon;
 
   return (
-    <section className="px-4 py-20 md:px-8 md:py-24 lg:px-12">
+    <section className="section-y px-4 md:px-8 lg:px-12">
       <div className="w-full">
         <SectionHeader label={site.faq.label} title={site.faq.title} align="center" />
-        <div className="mt-8 flex justify-center gap-2">
+        <div className="tab-scroller mt-4 justify-center">
           {(["academy", "salon"] as const).map((t) => (
             <button
               key={t}
               type="button"
               onClick={() => setTab(t)}
               className={cn(
-                "min-h-11 rounded-full border px-5 text-xs font-semibold uppercase tracking-[0.16em]",
+                "min-h-11 shrink-0 rounded-full border px-5 text-xs font-semibold uppercase tracking-[0.16em]",
                 tab === t
                   ? "border-[var(--gold)] bg-gold-grad text-[#0B0B0B]"
                   : "border-[var(--border)] text-muted-foreground",
@@ -30,10 +30,10 @@ export function FAQ() {
             </button>
           ))}
         </div>
-        <Accordion type="single" collapsible className="mt-8">
+        <Accordion type="single" collapsible className="mt-4">
           {items.map((item) => (
             <AccordionItem key={item.q} value={item.q} className="border-[var(--border)]">
-              <AccordionTrigger className="font-display text-left text-lg hover:no-underline hover:text-[var(--gold)]">
+              <AccordionTrigger className="py-3 font-display text-left text-sm hover:no-underline hover:text-[var(--gold)] md:text-base">
                 {item.q}
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">

@@ -5,9 +5,8 @@ import { Magnetic } from "@/components/site/Magnetic";
 import { PlaceholderText } from "@/components/site/PlaceholderText";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
-import { SmartImage } from "@/components/site/SmartImage";
 import { useSite } from "@/hooks/site-context";
-import { isValidEmail, isValidInPhone, openWhatsApp, postFormCopy } from "@/lib/forms";
+import { isValidInPhone, openWhatsApp, postFormCopy } from "@/lib/forms";
 import { site, telLink, waLink } from "@/content";
 import { cn } from "@/lib/utils";
 
@@ -17,7 +16,6 @@ type Form = {
   batch: string;
   name: string;
   phone: string;
-  email: string;
   ageQual: string;
   city: string;
   experience: string;
@@ -33,7 +31,6 @@ const empty: Form = {
   batch: "",
   name: "",
   phone: "",
-  email: "",
   ageQual: "",
   city: "",
   experience: "",
@@ -70,7 +67,6 @@ export function Enrol() {
     if (s === 2) {
       if (!form.name.trim()) next.name = "Name is required.";
       if (!isValidInPhone(form.phone)) next.phone = "Enter a 10-digit Indian mobile number.";
-      if (!isValidEmail(form.email)) next.email = "Enter a valid email or leave blank.";
       if (!form.experience) next.experience = "Select your experience.";
     }
     if (s === 3) {
@@ -97,20 +93,11 @@ export function Enrol() {
   };
 
   return (
-    <section id="enrol" className="px-4 py-20 md:px-8 md:py-28 lg:px-12">
-      <div className="grid w-full gap-10 lg:grid-cols-2">
+    <section id="enrol" className="section-y px-4 md:px-8 lg:px-12">
+      <div className="grid w-full gap-6 lg:grid-cols-2">
         <Reveal>
           <SectionHeader label={site.enrol.label} title={site.enrol.title} />
-          <div className="mt-8 overflow-hidden rounded-3xl">
-            <SmartImage
-              src={site.hero.slideshow[1]?.src ?? site.hero.slideshow[0]?.src ?? ""}
-              alt="Academy training"
-              width={1200}
-              height={800}
-              className="aspect-[4/3]"
-            />
-          </div>
-          <ul className="mt-6 space-y-3">
+          <ul className="mt-4 space-y-2">
             {site.enrol.trust.map((t) => (
               <li key={t} className="flex items-start gap-3 text-sm">
                 <Check className="mt-0.5 h-4 w-4 text-[var(--gold)]" />
@@ -126,7 +113,7 @@ export function Enrol() {
           ) : null}
         </Reveal>
 
-        <Reveal className="card-lux p-6 md:p-8">
+        <Reveal className="card-lux relative p-5 sm:p-6 md:p-8">
           {done ? (
             <div className="relative py-10 text-center">
               <span className="sparkle left-1/3 top-4" />
@@ -208,11 +195,6 @@ export function Enrol() {
                     {errors.phone ? <p className="mt-1 text-xs text-destructive">{errors.phone}</p> : null}
                   </label>
                   <label className="text-sm">
-                    Email (optional)
-                    <input className={cn("field-lux mt-2", errors.email && "field-lux-error")} value={form.email} onChange={(e) => set("email", e.target.value)} />
-                    {errors.email ? <p className="mt-1 text-xs text-destructive">{errors.email}</p> : null}
-                  </label>
-                  <label className="text-sm">
                     Age / qualification
                     <input className="field-lux mt-2" value={form.ageQual} onChange={(e) => set("ageQual", e.target.value)} />
                   </label>
@@ -281,7 +263,7 @@ export function Enrol() {
                   <input
                     tabIndex={-1}
                     autoComplete="off"
-                    className="absolute -left-[9999px] h-0 w-0 opacity-0"
+                    className="sr-only"
                     value={form.company}
                     onChange={(e) => set("company", e.target.value)}
                     aria-hidden="true"
@@ -289,7 +271,7 @@ export function Enrol() {
                 </div>
               ) : null}
 
-              <div className="mt-8 flex gap-3">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 {step > 1 ? (
                   <button type="button" className="btn-outline-gold flex-1" onClick={() => setStep((s) => s - 1)}>
                     {site.ui.back}

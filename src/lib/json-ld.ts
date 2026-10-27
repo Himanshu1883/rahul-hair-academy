@@ -1,4 +1,4 @@
-import { isPlaceholder, site } from "@/content";
+import { isPlaceholder, site, telE164 } from "@/content";
 
 export function buildJsonLd() {
   const courses = site.courses.items.map((course) => ({
@@ -11,15 +11,15 @@ export function buildJsonLd() {
       sameAs: site.instagram.url,
     },
     educationalLevel: course.level,
-    ...(isPlaceholder(course.fee)
-      ? {}
-      : {
+    ...(/^\d/.test(course.fee)
+      ? {
           offers: {
             "@type": "Offer",
             price: course.fee,
             priceCurrency: "INR",
           },
-        }),
+        }
+      : {}),
   }));
 
   const address = isPlaceholder(site.contact.address)
@@ -44,11 +44,15 @@ export function buildJsonLd() {
       name: `${site.brand} Salon`,
       description: site.hero.subline,
       sameAs: [site.instagram.url],
-      ...(isPlaceholder(site.contact.phone) ? {} : { telephone: site.contact.phone }),
+      ...(telE164() ? { telephone: telE164() } : {}),
       ...(address ? { address } : {}),
-      ...(isPlaceholder(site.contact.hours)
-        ? {}
-        : { openingHours: site.contact.hours }),
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: site.contact.lat,
+        longitude: site.contact.lng,
+      },
+      hasMap: site.contact.mapsLink,
+      openingHours: site.contact.openingHoursSchema,
     },
   ];
 

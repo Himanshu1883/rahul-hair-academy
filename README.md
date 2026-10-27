@@ -31,7 +31,7 @@ Copy `.env.example` to `.env` if you want the optional email or live Instagram f
 | --- | --- |
 | Brand, tagline, CTAs, nav | `site` |
 | Instagram handle / stats | `site.instagram` (`followersLabel` is editable — do not scrape live counts) |
-| Phone, WhatsApp, email, address, hours, maps | `site.contact` |
+| Phone, WhatsApp, address, hours, maps | `site.contact` |
 | Founder name & bio | `site.founder` |
 | Courses, fees, duration, syllabus, batches | `site.courses` |
 | Salon prices | `site.services` |
@@ -83,24 +83,20 @@ Sun/moon toggle in the navbar. Choice is stored in `localStorage` (`rha-theme`) 
 npm run build
 ```
 
-Deploy the output with Vercel, Netlify, or Lovable. After filling `site.contact`, replace `[CITY]` in `site.seo.title`.
+Deploy the output with Vercel, Netlify, or Lovable.
 
-## Remaining placeholders
+## Remaining media to add
+
+Contact phone, WhatsApp, address, hours, and maps are live. Course fees and salon prices show as “On enquiry” until exact amounts are confirmed.
 
 Ask the client for:
 
-- `[FOUNDER FULL NAME & BIO]`
-- `[CITY]`, `[ADDRESS]`, `[PHONE]`, `[WHATSAPP]`, `[EMAIL]`, `[HOURS]`, `[MAPS LINK]`
-- `[COURSE FEES]`, `[DURATION]`, `[BATCH DATES]` / `[BATCHES]`
-- `[SALON PRICES]`
-- `[CERTIFICATION DETAILS]` / affiliation
-- `[TRAINER NAME]`, specialities, portraits
-- Real student & salon reviews
+- Exact course fees and salon prices
+- Founder / trainer portraits
 - Before/after photos
 - Certificate preview image
 - Brochure PDF
 - Hero / classroom video
-- Confirm: certificate on completion, small batches, placement guidance, online vs offline, kit contents, product brands, time slots
 
 ## Continue in Lovable
 

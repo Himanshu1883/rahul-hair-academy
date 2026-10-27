@@ -18,11 +18,11 @@ export function SectionHeader({
         {label}
         <span className="h-px w-8 bg-[var(--gold)]" />
       </p>
-      <h2 className="mt-4 font-display text-3xl leading-[1.12] md:text-5xl lg:text-[3.35rem] gold-text-shimmer">
+      <h2 className="mt-2 font-display text-[clamp(1.45rem,4.2vw,2.55rem)] leading-[1.12] gold-text-shimmer">
         {title}
       </h2>
       {lead ? (
-        <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">{lead}</p>
+        <p className={cn("mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground", align === "center" && "mx-auto")}>{lead}</p>
       ) : null}
     </header>
   );

@@ -49,22 +49,25 @@ export function About() {
   const badge = `${site.brand} • LEARN • CREATE • MASTER • `;
 
   return (
-    <section id="academy" className="relative px-4 py-24 md:px-8 md:py-32 lg:px-12">
-      <div className="grid w-full items-center gap-14 lg:grid-cols-2">
-        <Reveal className="relative img-wipe">
-          <div className="frame-gold overflow-hidden">
+    <section
+      id="academy"
+      className="relative flex min-h-0 items-center overflow-x-clip px-4 py-8 md:px-8 lg:h-svh lg:max-h-svh lg:px-12 lg:py-8"
+    >
+      <div className="grid w-full items-center gap-5 lg:grid-cols-2 lg:gap-8">
+        <Reveal className="relative img-wipe max-w-[22rem] lg:max-w-[26rem]">
+          <div className="frame-gold overflow-hidden rounded-2xl">
             <SmartImage
               src={site.founder.portrait}
               alt={site.founder.name}
-              width={900}
-              height={1100}
-              className="aspect-[4/5] object-cover"
+              width={720}
+              height={720}
+              className="aspect-square max-h-[min(26rem,calc(100svh-10rem))] w-full object-contain"
             />
           </div>
-          <div className="absolute -right-4 -bottom-10 w-40 overflow-hidden rounded-2xl border border-[var(--border)] shadow-[var(--shadow-lux)] md:w-56">
+          <div className="absolute right-2 bottom-2 w-20 overflow-hidden rounded-2xl border border-[var(--border)] shadow-[var(--shadow-lux)] sm:w-24">
             <SmartImage src={site.about.classroomImage} alt="Academy classroom" width={480} height={360} />
           </div>
-          <div className="absolute -left-6 top-8 h-32 w-32 md:-left-10 md:h-40 md:w-40">
+          <div className="absolute left-2 top-3 h-14 w-14 sm:h-20 sm:w-20">
             <div className="badge-spin relative h-full w-full">
               <svg viewBox="0 0 200 200" className="h-full w-full">
                 <defs>
@@ -81,33 +84,30 @@ export function About() {
 
         <div>
           <SectionHeader label={site.about.label} title={site.about.title} lead={site.about.lead} />
-          <div className="mt-8 space-y-4 text-muted-foreground">
+          <div className="mt-3 space-y-1.5 text-sm text-muted-foreground">
             {site.about.story.map((p) => (
-              <Reveal key={p}>
-                <p className="leading-relaxed">{p}</p>
-              </Reveal>
+              <p key={p} className="leading-relaxed">
+                {p}
+              </p>
             ))}
           </div>
-          <Reveal className="mt-6 border-l-2 border-[var(--gold)] pl-4 text-sm italic text-muted-foreground">
-            <PlaceholderText value={site.founder.bio} />
-            <p className="mt-2 not-italic text-[var(--gold)]">
-              — <PlaceholderText value={site.founder.name} />, {site.founder.title}
-            </p>
-          </Reveal>
-          <IgLink className="mt-4 text-sm text-[var(--gold)]" showIcon>
+          <p className="mt-2.5 text-sm text-[var(--gold)]">
+            — <PlaceholderText value={site.founder.name} />, {site.founder.title}
+          </p>
+          <IgLink className="mt-1.5 text-sm text-[var(--gold)]" showIcon>
             {site.instagram.handle} · {site.instagram.followersLabel}
           </IgLink>
 
-          <dl className="mt-10 grid grid-cols-2 gap-6">
+          <dl className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {site.about.stats.map((stat) => (
               <div key={stat.label}>
-                <dt className="text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">
+                <dt className="text-[0.6rem] uppercase tracking-[0.18em] text-muted-foreground">
                   {stat.label}
                   {"confirm" in stat && stat.confirm ? (
                     <span className="ml-1 text-[var(--gold)]">[CONFIRM]</span>
                   ) : null}
                 </dt>
-                <dd className="mt-1 font-display text-3xl gold-text md:text-4xl">
+                <dd className="mt-0.5 font-display text-xl gold-text md:text-2xl">
                   <Counter value={stat.value} suffix={stat.suffix} />
                 </dd>
               </div>

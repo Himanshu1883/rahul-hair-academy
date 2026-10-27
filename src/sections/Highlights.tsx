@@ -16,16 +16,16 @@ const icons: Record<string, LucideIcon> = {
 
 export function Highlights() {
   return (
-    <section className="px-4 py-20 md:px-8 md:py-28 lg:px-12">
+    <section className="section-y px-4 md:px-8 lg:px-12">
       <div className="w-full">
         <SectionHeader label={site.highlights.label} title={site.highlights.title} align="center" />
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {site.highlights.items.map((item, i) => {
             const Icon = icons[item.icon] ?? Sparkles;
             return (
               <Reveal key={item.title} delay={i * 70}>
                 <TiltCard>
-                  <article className="card-lux h-full p-7">
+                  <article className="card-lux h-full p-5 sm:p-7">
                     <Icon className="h-7 w-7 text-[var(--gold)]" />
                     <h3 className="mt-5 font-display text-xl">
                       {item.title}

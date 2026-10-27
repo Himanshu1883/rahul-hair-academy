@@ -11,11 +11,6 @@ export function isValidInPhone(raw: string) {
   return /^[6-9]\d{9}$/.test(normalizeInPhone(raw));
 }
 
-export function isValidEmail(raw: string) {
-  if (!raw.trim()) return true;
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(raw.trim());
-}
-
 export function openWhatsApp(text: string) {
   const url = waLink(text);
   window.open(url, "_blank", "noopener,noreferrer");
@@ -36,11 +31,16 @@ export async function postFormCopy(payload: Record<string, string>) {
 }
 
 export function mapsEmbedSrc() {
-  if (isPlaceholder(site.contact.mapsLink) && isPlaceholder(site.contact.address)) return "";
-  if (!isPlaceholder(site.contact.mapsLink) && site.contact.mapsLink.includes("google.com")) {
-    if (site.contact.mapsLink.includes("output=embed")) return site.contact.mapsLink;
-    return `https://maps.google.com/maps?q=${encodeURIComponent(site.contact.address)}&output=embed`;
+  const { lat, lng, mapsLink, address } = site.contact;
+  if (typeof lat === "number" && typeof lng === "number") {
+    return `https://www.google.com/maps?q=${lat},${lng}&z=17&output=embed`;
   }
-  const q = isPlaceholder(site.contact.address) ? site.brand : site.contact.address;
+  if (isPlaceholder(mapsLink) && isPlaceholder(address)) return "";
+  if (!isPlaceholder(mapsLink) && mapsLink.includes("google.com")) {
+    if (mapsLink.includes("output=embed")) return mapsLink;
+    const q = isPlaceholder(address) ? site.brand : `${address}, ${site.contact.city}`;
+    return `https://maps.google.com/maps?q=${encodeURIComponent(q)}&output=embed`;
+  }
+  const q = isPlaceholder(address) ? site.brand : `${address}, ${site.contact.city}`;
   return `https://maps.google.com/maps?q=${encodeURIComponent(q)}&output=embed`;
 }

@@ -51,10 +51,10 @@ export function Booking() {
   };
 
   return (
-    <section id="booking" className="px-4 py-20 md:px-8 md:py-24 lg:px-12">
+    <section id="booking" className="section-y px-4 md:px-8 lg:px-12">
       <div className="w-full">
         <SectionHeader label={site.booking.label} title={site.booking.title} lead={site.booking.note} align="center" />
-        <Reveal className="card-lux mt-10 p-6 md:p-8">
+        <Reveal className="card-lux mt-5 p-4 sm:p-6">
           {done ? (
             <div className="py-8 text-center">
               <h3 className="font-display text-3xl gold-text">{site.booking.successTitle}</h3>
@@ -122,7 +122,7 @@ export function Booking() {
                 <textarea className="field-lux mt-2 min-h-24" value={notes} onChange={(e) => setNotes(e.target.value)} />
               </label>
               <input className="hidden" tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} aria-hidden="true" />
-              <button type="button" className="btn-gold sm:col-span-2" onClick={() => void submit()}>
+              <button type="button" className="btn-gold w-full sm:col-span-2" onClick={() => void submit()}>
                 {site.ui.requestAppointment}
               </button>
               <p className="text-center text-xs text-muted-foreground sm:col-span-2">{site.booking.note}</p>

@@ -1,5 +1,9 @@
-import { Check } from "lucide-react";
-import { useMemo, useState } from "react";
+import { Check, ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { Autoplay, Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
 
 import {
   Dialog,
@@ -9,7 +13,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { PlaceholderText } from "@/components/site/PlaceholderText";
-import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { SmartImage } from "@/components/site/SmartImage";
 import { useSite } from "@/hooks/site-context";
@@ -17,9 +20,13 @@ import { site, type Course } from "@/content";
 import { cn } from "@/lib/utils";
 
 export function Courses() {
-  const { goToEnrol } = useSite();
+  const { goToEnrol, prefilledCourseId } = useSite();
   const [filter, setFilter] = useState("all");
   const [open, setOpen] = useState<Course | null>(null);
+
+  useEffect(() => {
+    if (prefilledCourseId) setFilter("all");
+  }, [prefilledCourseId]);
 
   const items = useMemo(
     () => site.courses.items.filter((c) => filter === "all" || c.level === filter),
@@ -27,11 +34,11 @@ export function Courses() {
   );
 
   return (
-    <section id="courses" className="px-4 py-20 md:px-8 md:py-28 lg:px-12">
+    <section id="courses" className="section-y px-4 md:px-8 lg:px-12">
       <div className="w-full">
         <SectionHeader label={site.courses.label} title={site.courses.title} lead={site.courses.lead} />
 
-        <div className="mt-8 flex flex-wrap gap-2" role="tablist" aria-label="Course levels">
+        <div className="tab-scroller mt-5 pb-1" role="tablist" aria-label="Course levels">
           {site.courses.levels.map((level) => (
             <button
               key={level.id}
@@ -40,7 +47,7 @@ export function Courses() {
               aria-selected={filter === level.id}
               onClick={() => setFilter(level.id)}
               className={cn(
-                "min-h-11 rounded-full border px-4 text-xs font-semibold uppercase tracking-[0.16em]",
+                "min-h-10 shrink-0 rounded-full border px-4 text-xs font-semibold uppercase tracking-[0.16em]",
                 filter === level.id
                   ? "border-[var(--gold)] bg-gold-grad text-[#0B0B0B]"
                   : "border-[var(--border)] text-muted-foreground",
@@ -51,85 +58,89 @@ export function Courses() {
           ))}
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {items.map((course, i) => (
-            <Reveal key={course.id} delay={i * 60}>
-              <article className="card-lux relative flex h-full flex-col overflow-hidden">
-                {"ribbon" in course && course.ribbon ? (
-                  <span className="absolute top-4 right-4 z-10 rounded-full bg-gold-grad px-3 py-1 text-[0.65rem] font-bold uppercase tracking-widest text-[#0B0B0B]">
-                    {course.ribbon}
-                  </span>
-                ) : null}
-                <div className="frame-gold m-4 overflow-hidden">
-                  <SmartImage src={course.image} alt={course.title} width={800} height={560} className="aspect-[16/11]" />
-                </div>
-                <div className="flex flex-1 flex-col px-6 pb-6">
-                  <p className="text-[0.65rem] uppercase tracking-[0.2em] text-[var(--gold)]">{course.level}</p>
-                  <h3 className="mt-2 font-display text-2xl">{course.title}</h3>
-                  <p className="mt-3 text-sm text-muted-foreground">{course.teaser}</p>
-                  <dl className="mt-4 grid grid-cols-3 gap-2 text-xs text-muted-foreground">
-                    <div>
-                      <dt className="uppercase tracking-widest">Duration</dt>
-                      <dd><PlaceholderText value={course.duration} /></dd>
-                    </div>
-                    <div>
-                      <dt className="uppercase tracking-widest">Mode</dt>
-                      <dd><PlaceholderText value={course.mode} /></dd>
-                    </div>
-                    <div>
-                      <dt className="uppercase tracking-widest">Fee</dt>
-                      <dd><PlaceholderText value={course.fee} /></dd>
-                    </div>
-                  </dl>
-                  <p className="mt-4 text-[0.65rem] uppercase tracking-[0.18em] text-[var(--gold)]">
-                    {site.ui.whatYoullLearn}
-                  </p>
-                  <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">{course.syllabus[0]}</p>
-                  <div className="mt-auto flex gap-2 pt-5">
-                    <button type="button" className="btn-outline-gold flex-1 px-3 text-[0.7rem]" onClick={() => setOpen(course)}>
-                      {site.ui.viewSyllabus}
-                    </button>
-                    <button type="button" className="btn-gold flex-1 px-3 text-[0.7rem]" onClick={() => goToEnrol(course.id)}>
-                      {site.ui.enrolNow}
-                    </button>
-                  </div>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
+        <div className="relative mt-6">
+          <button
+            id="course-prev"
+            type="button"
+            className="absolute top-1/2 left-1 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--gold)] bg-[var(--surface)] text-[var(--gold)] shadow-[var(--shadow-lux)] md:inline-flex"
+            aria-label={site.ui.prevSlide}
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            id="course-next"
+            type="button"
+            className="absolute top-1/2 right-1 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--gold)] bg-[var(--surface)] text-[var(--gold)] shadow-[var(--shadow-lux)] md:inline-flex"
+            aria-label={site.ui.nextSlide}
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
 
-        <Reveal className="mt-16 overflow-x-auto">
-          <h3 className="mb-4 font-display text-2xl">Compare the path</h3>
-          <table className="w-full min-w-[640px] border-collapse text-sm">
-            <thead>
-              <tr>
-                <th className="border-b border-[var(--border)] p-3 text-left text-muted-foreground"> </th>
-                {site.courses.comparison.columns.map((col) => (
-                  <th key={col} className="border-b border-[var(--border)] p-3 text-left font-display text-base">
-                    {col}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {site.courses.comparison.rows.map((row) => (
-                <tr key={row.label}>
-                  <th className="border-b border-[var(--border)] p-3 text-left text-muted-foreground">{row.label}</th>
-                  {row.values.map((v, i) => (
-                    <td key={`${row.label}-${i}`} className="border-b border-[var(--border)] p-3">
-                      {v}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </Reveal>
+          <Swiper
+            key={filter}
+            className="course-swiper px-1"
+            modules={[Autoplay, Navigation]}
+            autoplay={{ delay: 3800, disableOnInteraction: false, pauseOnMouseEnter: true }}
+            navigation={{ prevEl: "#course-prev", nextEl: "#course-next" }}
+            spaceBetween={16}
+            slidesPerView={1.12}
+            breakpoints={{
+              640: { slidesPerView: 2.1 },
+              1024: { slidesPerView: 3 },
+              1280: { slidesPerView: 4 },
+            }}
+          >
+            {items.map((course) => (
+              <SwiperSlide key={course.id}>
+                <article
+                  id={`course-${course.id}`}
+                  className="card-lux relative flex h-full scroll-mt-28 flex-col overflow-hidden"
+                >
+                  {"ribbon" in course && course.ribbon ? (
+                    <span className="absolute top-3 right-3 z-10 rounded-full bg-gold-grad px-2.5 py-0.5 text-[0.6rem] font-bold uppercase tracking-widest text-[#0B0B0B]">
+                      {course.ribbon}
+                    </span>
+                  ) : null}
+                  <SmartImage
+                    src={course.image}
+                    alt={course.title}
+                    width={640}
+                    height={360}
+                    className="aspect-[16/10] object-cover"
+                  />
+                  <div className="flex flex-1 flex-col px-4 pt-3 pb-4">
+                    <p className="text-[0.6rem] uppercase tracking-[0.18em] text-[var(--gold)]">{course.level}</p>
+                    <h3 className="mt-1 font-display text-lg leading-tight">{course.title}</h3>
+                    <p className="mt-1.5 line-clamp-2 text-xs text-muted-foreground">{course.teaser}</p>
+                    <p className="mt-2 text-[0.7rem] text-muted-foreground">
+                      <PlaceholderText value={course.duration} /> · <PlaceholderText value={course.mode} />
+                    </p>
+                    <div className="mt-auto flex gap-2 pt-3">
+                      <button
+                        type="button"
+                        className="btn-outline-gold flex-1 px-2 text-[0.62rem]"
+                        onClick={() => setOpen(course)}
+                      >
+                        {site.ui.viewSyllabus}
+                      </button>
+                      <button
+                        type="button"
+                        className="btn-gold flex-1 px-2 text-[0.62rem]"
+                        onClick={() => goToEnrol(course.id)}
+                      >
+                        {site.ui.enrolNow}
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
 
       <Dialog open={!!open} onOpenChange={() => setOpen(null)}>
-        <DialogContent className="max-h-[85vh] overflow-y-auto border-[var(--border)] bg-[var(--surface)] sm:max-w-lg">
+        <DialogContent className="max-h-[85vh] w-[calc(100%-1.5rem)] overflow-y-auto border-[var(--border)] bg-[var(--surface)] sm:max-w-lg">
           {open ? (
             <>
               <DialogHeader>
@@ -147,11 +158,15 @@ export function Courses() {
               <dl className="mt-4 grid grid-cols-2 gap-3 text-sm">
                 <div>
                   <dt className="text-muted-foreground">Duration</dt>
-                  <dd><PlaceholderText value={open.duration} /></dd>
+                  <dd>
+                    <PlaceholderText value={open.duration} />
+                  </dd>
                 </div>
                 <div>
                   <dt className="text-muted-foreground">Batches</dt>
-                  <dd><PlaceholderText value={site.courses.batches} /></dd>
+                  <dd>
+                    <PlaceholderText value={site.courses.batches} />
+                  </dd>
                 </div>
                 <div>
                   <dt className="text-muted-foreground">{site.ui.kitIncluded}</dt>

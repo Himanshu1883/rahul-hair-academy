@@ -39,11 +39,11 @@ export function Journey() {
   }, [reduced, desktop]);
 
   return (
-    <section className="px-4 py-20 md:px-8 lg:px-12">
+    <section className="section-y px-4 md:px-8 lg:px-12">
       <div className="w-full">
         <SectionHeader label={site.journey.label} title={site.journey.title} align="center" />
       </div>
-      <div ref={pin} className="mt-12 flex min-h-[80vh] w-full flex-col justify-center lg:min-h-screen">
+      <div ref={pin} className="mt-8 flex w-full flex-col justify-center lg:min-h-[70vh]">
         {desktop && !reduced ? (
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <div>

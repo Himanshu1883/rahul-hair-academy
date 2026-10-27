@@ -31,7 +31,7 @@ export function HomePage() {
       <Preloader />
       <ScrollProgress />
       <Navbar />
-      <main className="pb-20 md:pb-0">
+      <main className="overflow-x-clip pb-[calc(5.5rem+env(safe-area-inset-bottom))] md:pb-0">
         <Hero />
         <Marquee />
         <About />

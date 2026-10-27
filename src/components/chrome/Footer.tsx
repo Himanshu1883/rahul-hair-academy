@@ -3,12 +3,12 @@ import { ArrowUp, Instagram } from "lucide-react";
 
 import { Logo } from "@/components/brand/Logo";
 import { IgLink } from "@/components/site/IgLink";
-import { PlaceholderText } from "@/components/site/PlaceholderText";
+import { OpeningHours } from "@/components/site/OpeningHours";
 import { useSite } from "@/hooks/site-context";
-import { mailLink, site, telLink } from "@/content";
+import { site, telLink, waLink } from "@/content";
 
 export function Footer() {
-  const { goTo, goToEnrol } = useSite();
+  const { goTo, goToCourse } = useSite();
   const fillRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -33,10 +33,10 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="relative overflow-hidden border-t border-[var(--border)] pb-24 pt-16 md:pb-10">
-      <div className="grid w-full gap-10 px-5 md:grid-cols-4 md:px-10 lg:px-12">
+    <footer className="relative overflow-x-clip border-t border-[var(--border)] pt-16 pb-[calc(6.5rem+env(safe-area-inset-bottom))] md:pb-10">
+      <div className="grid w-full gap-10 px-4 sm:grid-cols-2 md:px-10 lg:grid-cols-4 lg:px-12">
         <div>
-          <Logo variant="full" className="h-24" />
+          <Logo variant="full" className="h-16 sm:h-24" />
           <p className="mt-4 max-w-xs text-sm text-muted-foreground">{site.tagline}</p>
           <IgLink showIcon className="mt-4 text-sm text-[var(--gold)]">
             {site.instagram.handle}
@@ -57,10 +57,10 @@ export function Footer() {
         <div>
           <p className="section-label mb-4">Courses</p>
           <ul className="space-y-2 text-sm">
-            {site.courses.items.slice(0, 5).map((course) => (
+            {site.navCourses.map((course) => (
               <li key={course.id}>
-                <button type="button" className="text-left hover:text-[var(--gold)]" onClick={() => goToEnrol(course.id)}>
-                  {course.title}
+                <button type="button" className="text-left hover:text-[var(--gold)]" onClick={() => goToCourse(course.id)}>
+                  {course.navLabel}
                 </button>
               </li>
             ))}
@@ -70,13 +70,21 @@ export function Footer() {
           <p className="section-label mb-4">Contact</p>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>
-              <a href={telLink()}><PlaceholderText value={site.contact.phone} /></a>
+              <a href={telLink()}>{site.contact.phone}</a>
             </li>
             <li>
-              <a href={mailLink()}><PlaceholderText value={site.contact.email} /></a>
+              <a href={waLink(`Hi ${site.brand}, I’d like to get in touch.`)} target="_blank" rel="noopener noreferrer">
+                WhatsApp · {site.contact.whatsapp}
+              </a>
             </li>
-            <li><PlaceholderText value={site.contact.address} /></li>
-            <li><PlaceholderText value={site.contact.hours} /></li>
+            <li>
+              <a href={site.contact.mapsLink} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--gold)]">
+                {site.contact.address}, {site.contact.city}
+              </a>
+            </li>
+            <li>
+              <OpeningHours compact />
+            </li>
             <li>
               <a href={site.instagram.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[var(--gold)]">
                 <Instagram className="h-4 w-4" />
@@ -87,14 +95,14 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="relative mt-16 w-full px-5">
+      <div className="relative mt-8 w-full px-5">
         <div className="wordmark wordmark-outline">{site.brand}</div>
         <div ref={fillRef} className="wordmark wordmark-fill">
           {site.brand}
         </div>
       </div>
 
-      <div className="mt-10 flex w-full items-center justify-between px-5 text-xs text-muted-foreground md:px-10 lg:px-12">
+      <div className="mt-10 flex w-full flex-wrap items-center justify-between gap-3 px-4 text-xs text-muted-foreground md:px-10 lg:px-12">
         <p>© {new Date().getFullYear()} {site.brand}</p>
         <button type="button" className="inline-flex items-center gap-2 hover:text-[var(--gold)]" onClick={() => goTo("home")}>
           {site.ui.backToTop}

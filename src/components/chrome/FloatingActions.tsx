@@ -4,7 +4,7 @@ import { site, waLink } from "@/content";
 
 export function FloatingActions() {
   return (
-    <div className="fixed right-4 bottom-24 z-40 flex flex-col gap-3 md:bottom-8">
+    <div className="fixed right-3 bottom-[calc(6.25rem+env(safe-area-inset-bottom))] z-40 flex flex-col gap-3 md:right-4 md:bottom-8">
       <a
         href={waLink(`Hi ${site.brand}, I’d like to know more about your courses.`)}
         target="_blank"

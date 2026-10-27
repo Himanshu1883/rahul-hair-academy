@@ -7,10 +7,10 @@ import { site } from "@/content";
 
 export function Certification() {
   return (
-    <section className="px-4 py-20 md:px-8 lg:px-12">
+    <section className="section-y px-4 md:px-8 lg:px-12">
       <div className="w-full">
         <SectionHeader label={site.certification.label} title={site.certification.title} align="center" />
-        <Reveal className="mt-12 grid items-center gap-10 md:grid-cols-2">
+        <Reveal className="mt-6 grid items-center gap-8 md:grid-cols-2">
           <div className="frame-gold flex min-h-72 items-center justify-center bg-[var(--surface)] p-8">
             {site.certification.certificateImage ? (
               <img src={site.certification.certificateImage} alt="Certificate preview" className="max-h-80" />
@@ -18,7 +18,7 @@ export function Certification() {
               <div className="text-center">
                 <Award className="h-12 w-12 text-[var(--gold)]" />
                 <p className="mt-4 font-display text-xl">Certificate preview</p>
-                <p className="mt-2 text-sm text-muted-foreground">[CLIENT TO SEND]</p>
+                <p className="mt-2 text-sm text-muted-foreground">{site.certification.previewNote}</p>
               </div>
             )}
           </div>

@@ -23,6 +23,7 @@ type SiteCtx = {
   prefilledService: string;
   goTo: (id: string) => void;
   goToEnrol: (courseId?: string) => void;
+  goToCourse: (courseId: string) => void;
   goToBooking: (service?: string) => void;
 };
 
@@ -106,6 +107,14 @@ export function SiteProvider({ children }: { children: ReactNode }) {
     [],
   );
 
+  const goToCourse = useCallback((courseId: string) => {
+    setPrefilledCourseId(courseId);
+    window.setTimeout(() => {
+      const target = `course-${courseId}`;
+      scrollToId(document.getElementById(target) ? target : "courses");
+    }, 80);
+  }, []);
+
   const goToBooking = useCallback((service?: string) => {
     if (service) setPrefilledService(service);
     scrollToId("booking");
@@ -123,6 +132,7 @@ export function SiteProvider({ children }: { children: ReactNode }) {
       prefilledService,
       goTo,
       goToEnrol,
+      goToCourse,
       goToBooking,
     }),
     [
@@ -135,6 +145,7 @@ export function SiteProvider({ children }: { children: ReactNode }) {
       prefilledService,
       goTo,
       goToEnrol,
+      goToCourse,
       goToBooking,
     ],
   );

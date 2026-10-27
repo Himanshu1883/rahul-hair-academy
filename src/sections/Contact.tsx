@@ -1,52 +1,37 @@
-import { Clock, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { Instagram, MapPin, Phone } from "lucide-react";
 
-import { PlaceholderText } from "@/components/site/PlaceholderText";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
-import { isPlaceholder, mailLink, site, telLink, waLink } from "@/content";
+import { site, telLink, waLink } from "@/content";
 import { mapsEmbedSrc } from "@/lib/forms";
 
 export function Contact() {
-  const embed = !isPlaceholder(site.contact.address) || !isPlaceholder(site.contact.mapsLink) ? mapsEmbedSrc() : "";
+  const embed = mapsEmbedSrc();
 
   return (
-    <section id="contact" className="px-4 py-20 md:px-8 md:py-28 lg:px-12">
-      <div className="grid w-full gap-10 lg:grid-cols-2">
+    <section id="contact" className="section-y px-4 md:px-8 lg:px-12">
+      <div className="grid w-full gap-6 lg:grid-cols-2">
         <div>
           <SectionHeader label="CONTACT" title="Visit the Academy" />
-          <ul className="mt-8 space-y-5">
+          <ul className="mt-4 space-y-3 break-words text-sm">
             <li className="flex gap-3">
-              <Phone className="h-5 w-5 text-[var(--gold)]" />
-              <a href={telLink()}>
-                <PlaceholderText value={site.contact.phone} />
-              </a>
+              <Phone className="h-5 w-5 shrink-0 text-[var(--gold)]" />
+              <a href={telLink()}>{site.contact.phone}</a>
             </li>
             <li className="flex gap-3">
-              <Phone className="h-5 w-5 text-[var(--gold)]" />
+              <Phone className="h-5 w-5 shrink-0 text-[var(--gold)]" />
               <a href={waLink(`Hi ${site.brand}, I’d like to get in touch.`)} target="_blank" rel="noopener noreferrer">
-                WhatsApp · <PlaceholderText value={site.contact.whatsapp} />
+                WhatsApp · {site.contact.whatsapp}
               </a>
             </li>
             <li className="flex gap-3">
-              <Mail className="h-5 w-5 text-[var(--gold)]" />
-              <a href={mailLink()}>
-                <PlaceholderText value={site.contact.email} />
+              <MapPin className="h-5 w-5 shrink-0 text-[var(--gold)]" />
+              <a href={site.contact.mapsLink} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--gold)]">
+                {site.contact.address}, {site.contact.city}
               </a>
             </li>
             <li className="flex gap-3">
-              <MapPin className="h-5 w-5 text-[var(--gold)]" />
-              <span>
-                <PlaceholderText value={site.contact.address} />
-                {", "}
-                <PlaceholderText value={site.contact.city} />
-              </span>
-            </li>
-            <li className="flex gap-3">
-              <Clock className="h-5 w-5 text-[var(--gold)]" />
-              <PlaceholderText value={site.contact.hours} />
-            </li>
-            <li className="flex gap-3">
-              <Instagram className="h-5 w-5 text-[var(--gold)]" />
+              <Instagram className="h-5 w-5 shrink-0 text-[var(--gold)]" />
               <a href={site.instagram.url} target="_blank" rel="noopener noreferrer">
                 {site.instagram.handle}
               </a>
@@ -55,20 +40,25 @@ export function Contact() {
         </div>
         <Reveal>
           {embed ? (
-            <iframe
-              title="Map"
-              src={embed}
-              className="h-[360px] w-full rounded-3xl border border-[var(--border)]"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          ) : (
-            <div className="flex h-[360px] items-center justify-center rounded-3xl border border-[var(--border)] bg-[var(--surface)] text-center">
-              <p className="max-w-xs text-sm text-muted-foreground">
-                Map appears here once <PlaceholderText value={site.contact.mapsLink} /> or the address is filled in.
-              </p>
+            <div className="overflow-hidden rounded-2xl border border-[var(--border)]">
+              <iframe
+                title={`${site.brand} map`}
+                src={embed}
+                className="h-[280px] w-full lg:h-[340px]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+              <a
+                href={site.contact.mapsLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block border-t border-[var(--border)] bg-[var(--surface)] px-4 py-2.5 text-center text-xs font-semibold uppercase tracking-[0.16em] text-[var(--gold)]"
+              >
+                {site.ui.viewMap}
+              </a>
             </div>
-          )}
+          ) : null}
         </Reveal>
       </div>
     </section>
