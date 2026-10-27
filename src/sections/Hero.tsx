@@ -1,4 +1,4 @@
-import { Instagram } from "lucide-react";
+import { InstagramIcon } from "@/components/brand/SocialIcons";
 import { useEffect, useState } from "react";
 
 import { Crown } from "@/components/brand/Crown";
@@ -136,7 +136,7 @@ export function Hero() {
           rel="noopener noreferrer"
           className="hero-ig relative z-10 mt-8 inline-flex items-center justify-center gap-2 whitespace-nowrap text-[0.62rem] font-semibold uppercase sm:text-[0.7rem]"
         >
-          <Instagram className="h-3.5 w-3.5 shrink-0" />
+          <InstagramIcon className="h-4 w-4 shrink-0" />
           <span>{site.instagram.handle}</span>
           <span aria-hidden="true">·</span>
           <span>{site.instagram.followersLabel}</span>

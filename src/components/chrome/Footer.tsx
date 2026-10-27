@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
-import { ArrowUp, Instagram } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 import { Logo } from "@/components/brand/Logo";
+import { InstagramIcon, WhatsAppIcon } from "@/components/brand/SocialIcons";
 import { IgLink } from "@/components/site/IgLink";
 import { OpeningHours } from "@/components/site/OpeningHours";
 import { useSite } from "@/hooks/site-context";
@@ -73,8 +74,9 @@ export function Footer() {
               <a href={telLink()}>{site.contact.phone}</a>
             </li>
             <li>
-              <a href={waLink(`Hi ${site.brand}, I’d like to get in touch.`)} target="_blank" rel="noopener noreferrer">
-                WhatsApp · {site.contact.whatsapp}
+              <a href={waLink(`Hi ${site.brand}, I’d like to get in touch.`)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                <WhatsAppIcon className="h-5 w-5" />
+                {site.contact.whatsapp}
               </a>
             </li>
             <li>
@@ -86,8 +88,8 @@ export function Footer() {
               <OpeningHours compact />
             </li>
             <li>
-              <a href={site.instagram.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[var(--gold)]">
-                <Instagram className="h-4 w-4" />
+              <a href={site.instagram.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                <InstagramIcon className="h-5 w-5" />
                 {site.instagram.handle}
               </a>
             </li>

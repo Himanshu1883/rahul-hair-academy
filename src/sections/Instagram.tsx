@@ -1,7 +1,7 @@
-import { Instagram as IgIcon } from "lucide-react";
 import { useState } from "react";
 
 import { Logo } from "@/components/brand/Logo";
+import { InstagramIcon } from "@/components/brand/SocialIcons";
 import { AutoplayVideo } from "@/components/site/AutoplayVideo";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
@@ -40,7 +40,7 @@ export function Instagram() {
 
         <div className="mt-5 flex justify-center">
           <a href={site.instagram.url} target="_blank" rel="noopener noreferrer" className="btn-gold">
-            <IgIcon className="h-4 w-4" />
+            <InstagramIcon className="h-4 w-4" />
             {site.ui.followIg}
           </a>
         </div>

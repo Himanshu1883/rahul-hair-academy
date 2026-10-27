@@ -1,7 +1,7 @@
-import { Instagram } from "lucide-react";
 import { useState } from "react";
 
 import { Logo } from "@/components/brand/Logo";
+import { InstagramIcon } from "@/components/brand/SocialIcons";
 import { AutoplayVideo } from "@/components/site/AutoplayVideo";
 import { PlaceholderText } from "@/components/site/PlaceholderText";
 import { Reveal } from "@/components/site/Reveal";
@@ -48,9 +48,9 @@ export function Team() {
                     href={member.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-2 text-sm text-[var(--gold)]"
+                    className="mt-3 inline-flex items-center gap-2 text-sm"
                   >
-                    <Instagram className="h-4 w-4" />
+                    <InstagramIcon className="h-4 w-4" />
                     {site.instagram.handle}
                   </a>
                 </div>

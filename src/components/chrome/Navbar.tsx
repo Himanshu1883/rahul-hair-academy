@@ -1,9 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Instagram, Menu, Moon, Sun, X } from "lucide-react";
+import { ChevronDown, Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 import { Logo } from "@/components/brand/Logo";
+import { InstagramIcon } from "@/components/brand/SocialIcons";
 import { Magnetic } from "@/components/site/Magnetic";
 import { useSite } from "@/hooks/site-context";
 import { site } from "@/content";
@@ -160,9 +161,9 @@ export function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={site.instagram.handle}
-            className="hidden h-11 w-11 items-center justify-center rounded-full text-[var(--gold)] hover:bg-[var(--surface)] sm:inline-flex"
+            className="hidden h-11 w-11 items-center justify-center overflow-hidden rounded-[0.7rem] sm:inline-flex"
           >
-            <Instagram className="h-5 w-5" />
+            <InstagramIcon className="h-7 w-7" />
           </a>
           <button
             type="button"

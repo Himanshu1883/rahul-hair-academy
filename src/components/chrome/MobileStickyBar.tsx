@@ -1,5 +1,6 @@
 import { Phone } from "lucide-react";
 
+import { WhatsAppIcon } from "@/components/brand/SocialIcons";
 import { useSite } from "@/hooks/site-context";
 import { site, telLink, waLink } from "@/content";
 
@@ -19,6 +20,7 @@ export function MobileStickyBar() {
           rel="noopener noreferrer"
           className="btn-outline-gold min-w-0 px-1 text-[0.58rem] tracking-[0.08em]"
         >
+          <WhatsAppIcon className="h-4 w-4" />
           {site.ui.whatsapp}
         </a>
         <button type="button" className="btn-gold min-w-0 px-1 text-[0.58rem] tracking-[0.08em]" onClick={() => goToEnrol()}>

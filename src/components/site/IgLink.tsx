@@ -1,6 +1,6 @@
-import { Instagram } from "lucide-react";
 import type { ReactNode } from "react";
 
+import { InstagramIcon } from "@/components/brand/SocialIcons";
 import { site } from "@/content";
 import { cn } from "@/lib/utils";
 
@@ -21,7 +21,7 @@ export function IgLink({
       className={cn("inline-flex items-center gap-2", className)}
       aria-label={`Instagram ${site.instagram.handle}`}
     >
-      {showIcon ? <Instagram className="h-4 w-4" /> : null}
+      {showIcon ? <InstagramIcon className="h-4 w-4" /> : null}
       {children ?? site.instagram.handle}
     </a>
   );

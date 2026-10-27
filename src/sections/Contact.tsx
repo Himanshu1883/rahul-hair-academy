@@ -1,4 +1,6 @@
-import { Instagram, MapPin, Phone } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
+
+import { InstagramIcon, WhatsAppIcon } from "@/components/brand/SocialIcons";
 
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
@@ -18,10 +20,10 @@ export function Contact() {
               <Phone className="h-5 w-5 shrink-0 text-[var(--gold)]" />
               <a href={telLink()}>{site.contact.phone}</a>
             </li>
-            <li className="flex gap-3">
-              <Phone className="h-5 w-5 shrink-0 text-[var(--gold)]" />
+            <li className="flex items-center gap-3">
+              <WhatsAppIcon className="h-5 w-5 shrink-0" />
               <a href={waLink(`Hi ${site.brand}, I’d like to get in touch.`)} target="_blank" rel="noopener noreferrer">
-                WhatsApp · {site.contact.whatsapp}
+                {site.contact.whatsapp}
               </a>
             </li>
             <li className="flex gap-3">
@@ -30,8 +32,8 @@ export function Contact() {
                 {site.contact.address}, {site.contact.city}
               </a>
             </li>
-            <li className="flex gap-3">
-              <Instagram className="h-5 w-5 shrink-0 text-[var(--gold)]" />
+            <li className="flex items-center gap-3">
+              <InstagramIcon className="h-5 w-5 shrink-0" />
               <a href={site.instagram.url} target="_blank" rel="noopener noreferrer">
                 {site.instagram.handle}
               </a>

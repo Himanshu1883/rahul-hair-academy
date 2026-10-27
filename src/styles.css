@@ -810,3 +810,33 @@ html.light .btn-outline-gold:hover {
     transition: none;
   }
 }
+
+@media (hover: hover) and (pointer: fine) {
+  html,
+  html body,
+  html a,
+  html button,
+  html [role="button"],
+  html label,
+  html .btn-gold,
+  html .btn-outline-gold,
+  html .btn-ghost-gold {
+    cursor: url("/cursors/scissors-light.png") 24 2, auto;
+  }
+  html.light,
+  html.light body,
+  html.light a,
+  html.light button,
+  html.light [role="button"],
+  html.light label,
+  html.light .btn-gold,
+  html.light .btn-outline-gold,
+  html.light .btn-ghost-gold {
+    cursor: url("/cursors/scissors-dark.png") 24 2, auto;
+  }
+  html input,
+  html textarea,
+  html select {
+    cursor: text;
+  }
+}

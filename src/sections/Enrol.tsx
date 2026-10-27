@@ -1,4 +1,6 @@
-import { Check, Download, Instagram, Phone } from "lucide-react";
+import { Check, Download, Phone } from "lucide-react";
+
+import { InstagramIcon, WhatsAppIcon } from "@/components/brand/SocialIcons";
 import { useEffect, useMemo, useState } from "react";
 
 import { Magnetic } from "@/components/site/Magnetic";
@@ -125,10 +127,10 @@ export function Enrol() {
                   <Phone className="h-4 w-4" /> {site.ui.call}
                 </a>
                 <a href={waLink(`Hi ${site.brand}, following up on my course enquiry.`)} className="btn-gold" target="_blank" rel="noopener noreferrer">
-                  {site.ui.whatsapp}
+                  <WhatsAppIcon className="h-5 w-5" /> {site.ui.whatsapp}
                 </a>
                 <a href={site.instagram.url} className="btn-outline-gold" target="_blank" rel="noopener noreferrer">
-                  <Instagram className="h-4 w-4" /> {site.ui.dmInstagram}
+                  <InstagramIcon className="h-4 w-4" /> {site.ui.dmInstagram}
                 </a>
               </div>
             </div>

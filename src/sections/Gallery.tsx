@@ -1,4 +1,6 @@
-import { ChevronLeft, ChevronRight, Instagram, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+
+import { InstagramIcon } from "@/components/brand/SocialIcons";
 import { useEffect, useMemo, useState } from "react";
 
 import { Reveal } from "@/components/site/Reveal";
@@ -100,9 +102,9 @@ export function Gallery() {
             href={site.instagram.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute bottom-6 inline-flex items-center gap-2 text-[var(--gold)]"
+            className="absolute bottom-6 inline-flex items-center gap-2"
           >
-            <Instagram className="h-4 w-4" />
+            <InstagramIcon className="h-4 w-4" />
             {site.instagram.handle}
           </a>
         </div>
