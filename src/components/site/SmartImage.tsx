@@ -16,9 +16,9 @@ export function SmartImage({ src, alt, width, height, className, priority = fals
       alt={alt}
       width={width}
       height={height}
-      loading={priority ? "eager" : "lazy"}
-      decoding={priority ? "sync" : "async"}
-      fetchPriority={priority ? "high" : "low"}
+      loading="eager"
+      decoding="async"
+      fetchPriority={priority ? "high" : "auto"}
       className={cn("h-full w-full object-cover", className)}
     />
   );

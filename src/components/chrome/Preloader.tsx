@@ -17,11 +17,11 @@ export function Preloader() {
       markPreloaderDone();
       return;
     }
-    const spreadTimer = window.setTimeout(() => setSpread(true), 220);
+    const spreadTimer = window.setTimeout(() => setSpread(true), 160);
     const hideTimer = window.setTimeout(() => {
       setVisible(false);
       markPreloaderDone();
-    }, 1900);
+    }, 900);
     return () => {
       window.clearTimeout(spreadTimer);
       window.clearTimeout(hideTimer);

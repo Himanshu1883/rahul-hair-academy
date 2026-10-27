@@ -9,6 +9,7 @@ import {
 } from "react";
 
 import { scrollToId, setLenis } from "@/lib/lenis";
+import { preloadSiteMedia } from "@/lib/preload-media";
 import { useReducedMotion } from "@/hooks/media";
 import { useTheme, type Theme } from "@/hooks/use-theme";
 
@@ -36,6 +37,10 @@ export function SiteProvider({ children }: { children: ReactNode }) {
   const [activeSection, setActiveSection] = useState("home");
   const [prefilledCourseId, setPrefilledCourseId] = useState("");
   const [prefilledService, setPrefilledService] = useState("");
+
+  useEffect(() => {
+    preloadSiteMedia();
+  }, []);
 
   useEffect(() => {
     if (reducedMotion) {

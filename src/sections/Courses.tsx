@@ -106,6 +106,7 @@ export function Courses() {
                     alt={course.title}
                     width={640}
                     height={360}
+                    priority
                     className="aspect-[16/10] object-cover"
                   />
                   <div className="flex flex-1 flex-col px-4 pt-3 pb-4">

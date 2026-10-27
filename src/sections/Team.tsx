@@ -1,7 +1,8 @@
 import { Instagram } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 import { Logo } from "@/components/brand/Logo";
+import { AutoplayVideo } from "@/components/site/AutoplayVideo";
 import { PlaceholderText } from "@/components/site/PlaceholderText";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
@@ -63,41 +64,15 @@ export function Team() {
 }
 
 function TeamReel({ unmuted, onToggleMute }: { unmuted: boolean; onToggleMute: () => void }) {
-  const ref = useRef<HTMLVideoElement>(null);
   const reel = site.team.reel;
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting) void el.play().catch(() => undefined);
-        else el.pause();
-      },
-      { threshold: 0.45 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    el.muted = !unmuted;
-    if (unmuted) void el.play().catch(() => undefined);
-  }, [unmuted]);
 
   return (
     <article className="relative h-full overflow-hidden rounded-[1.75rem] border border-[var(--border)] bg-black shadow-[var(--shadow-lux)]">
-      <video
-        ref={ref}
+      <AutoplayVideo
         src={reel.video}
-        muted
-        loop
-        playsInline
-        preload="metadata"
+        unmuted={unmuted}
+        label={reel.headline}
         className="aspect-[4/5] h-full w-full object-cover"
-        aria-label={reel.headline}
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/30" />
       <div className="absolute top-4 right-4 z-10">

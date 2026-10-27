@@ -61,6 +61,7 @@ export function About() {
               alt={site.founder.name}
               width={720}
               height={720}
+              priority
               className="aspect-square max-h-[min(26rem,calc(100svh-10rem))] w-full object-contain"
             />
           </div>

@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
+import { AutoplayVideo } from "@/components/site/AutoplayVideo";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { site } from "@/content";
@@ -54,41 +55,9 @@ function TransformationCard({
   unmuted: boolean;
   onToggleMute: () => void;
 }) {
-  const ref = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting) void el.play().catch(() => undefined);
-        else el.pause();
-      },
-      { threshold: 0.45 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    el.muted = !unmuted;
-    if (unmuted) void el.play().catch(() => undefined);
-  }, [unmuted]);
-
   return (
     <article className="relative overflow-hidden rounded-[1.75rem] border border-[var(--border)] bg-black shadow-[var(--shadow-lux)]">
-      <video
-        ref={ref}
-        src={item.video}
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        className="aspect-[4/5] w-full object-cover"
-        aria-label={item.headline}
-      />
+      <AutoplayVideo src={item.video} unmuted={unmuted} label={item.headline} className="aspect-[4/5] w-full object-cover" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/35" />
 
       <div className="absolute top-4 right-4 left-4 z-10 flex items-start justify-between gap-2">

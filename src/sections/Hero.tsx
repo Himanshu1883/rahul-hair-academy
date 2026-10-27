@@ -36,7 +36,17 @@ export function Hero() {
             muted
             loop
             playsInline
+            preload="auto"
             poster={site.hero.slideshow[0]?.src}
+            onCanPlay={(e) => {
+              const el = e.currentTarget;
+              el.defaultMuted = true;
+              el.muted = true;
+              el.setAttribute("muted", "");
+              el.setAttribute("playsinline", "");
+              el.setAttribute("webkit-playsinline", "true");
+              void el.play().catch(() => undefined);
+            }}
           >
             <source src={site.hero.video} />
           </video>
@@ -52,7 +62,7 @@ export function Hero() {
                 alt={item.alt}
                 width={1920}
                 height={1080}
-                priority={i === 0}
+                priority
                 className={reducedMotion ? "hero-media" : "hero-media animate-[ken-burns_16s_ease-in-out_infinite_alternate]"}
               />
             </div>
