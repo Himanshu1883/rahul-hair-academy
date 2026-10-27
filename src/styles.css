@@ -129,6 +129,11 @@ html.light {
     scroll-behavior: smooth;
     overflow-x: clip;
   }
+  html.menu-open,
+  html.menu-open body {
+    overflow: hidden !important;
+    overscroll-behavior: none;
+  }
   html.lenis, html.lenis body {
     height: auto;
   }
@@ -633,12 +638,11 @@ html.light .logo-img {
     padding: 0.4rem 0.55rem;
   }
 }
-.hero-ig,
-.hero-scroll {
+.hero-ig {
   color: #d4af37;
   font-size: 0.65rem;
   font-weight: 600;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 .hero-wings {
@@ -676,8 +680,7 @@ html.light .hero-subline {
   text-shadow: none;
 }
 html.light .hero-kicker,
-html.light .hero-ig,
-html.light .hero-scroll {
+html.light .hero-ig {
   color: #7a5a0e;
 }
 html.light .hero-rule {

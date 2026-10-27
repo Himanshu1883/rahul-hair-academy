@@ -10,6 +10,14 @@ export function getLenis() {
   return lenis;
 }
 
+export function stopLenis() {
+  lenis?.stop();
+}
+
+export function startLenis() {
+  lenis?.start();
+}
+
 export function scrollToId(id: string, offset = -88) {
   if (typeof document === "undefined") return;
   const el = document.getElementById(id);

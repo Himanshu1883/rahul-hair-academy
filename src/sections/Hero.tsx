@@ -1,4 +1,4 @@
-import { ChevronDown, Instagram } from "lucide-react";
+import { Instagram } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Crown } from "@/components/brand/Crown";
@@ -134,24 +134,14 @@ export function Hero() {
           href={site.instagram.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="hero-ig relative z-10 mt-6 inline-flex max-w-full flex-wrap items-center justify-center gap-2 px-2 text-[0.62rem] font-semibold uppercase tracking-[0.14em] sm:text-[0.7rem] sm:tracking-[0.22em]"
+          className="hero-ig relative z-10 mt-8 inline-flex items-center justify-center gap-2 whitespace-nowrap text-[0.62rem] font-semibold uppercase sm:text-[0.7rem]"
         >
-          <Instagram className="h-3.5 w-3.5" />
-          {site.instagram.handle}
+          <Instagram className="h-3.5 w-3.5 shrink-0" />
+          <span>{site.instagram.handle}</span>
           <span aria-hidden="true">·</span>
-          {site.instagram.followersLabel}
+          <span>{site.instagram.followersLabel}</span>
         </a>
       </div>
-
-      <button
-        type="button"
-        onClick={() => goTo("academy")}
-        className="hero-scroll absolute bottom-[calc(5.5rem+env(safe-area-inset-bottom))] left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 md:bottom-8"
-        aria-label={site.ui.scroll}
-      >
-        {site.ui.scroll}
-        <ChevronDown className="h-5 w-5 animate-bounce" />
-      </button>
     </section>
   );
 }

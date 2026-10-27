@@ -1,11 +1,13 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Instagram, Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 import { Logo } from "@/components/brand/Logo";
 import { Magnetic } from "@/components/site/Magnetic";
 import { useSite } from "@/hooks/site-context";
 import { site } from "@/content";
+import { startLenis, stopLenis } from "@/lib/lenis";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -23,9 +25,27 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    const html = document.documentElement;
+    const body = document.body;
+    if (open) {
+      stopLenis();
+      html.classList.add("menu-open");
+      html.style.overflow = "hidden";
+      body.style.overflow = "hidden";
+      body.style.overscrollBehavior = "none";
+    } else {
+      startLenis();
+      html.classList.remove("menu-open");
+      html.style.overflow = "";
+      body.style.overflow = "";
+      body.style.overscrollBehavior = "";
+    }
     return () => {
-      document.body.style.overflow = "";
+      startLenis();
+      html.classList.remove("menu-open");
+      html.style.overflow = "";
+      body.style.overflow = "";
+      body.style.overscrollBehavior = "";
     };
   }, [open]);
 
@@ -59,10 +79,12 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] transition-[background-color,backdrop-filter,padding,box-shadow] duration-[400ms]",
-        scrolled
-          ? "bg-[color-mix(in_srgb,var(--background)_78%,transparent)] py-2 shadow-[0_10px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl"
-          : "bg-transparent py-3 sm:py-4",
+        "fixed inset-x-0 top-0 z-[70] pt-[env(safe-area-inset-top)] transition-[background-color,backdrop-filter,padding,box-shadow] duration-[400ms]",
+        open
+          ? "bg-[var(--background)] py-3 sm:py-4"
+          : scrolled
+            ? "bg-[color-mix(in_srgb,var(--background)_78%,transparent)] py-2 shadow-[0_10px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl"
+            : "bg-transparent py-3 sm:py-4",
       )}
     >
       <div className="relative z-50 flex w-full min-w-0 items-center justify-between gap-2 px-3 sm:gap-4 sm:px-4 md:px-8 lg:px-12">
@@ -170,67 +192,73 @@ export function Navbar() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {open ? (
-          <motion.div
-            className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-[#0B0B0B] px-6 pt-24 pb-[calc(6rem+env(safe-area-inset-bottom))] sm:px-8 sm:pt-28 xl:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <nav className="flex flex-1 flex-col gap-1" aria-label="Mobile">
-              {site.nav.map((item, i) => (
-                <div key={item.id}>
-                  <motion.button
-                    type="button"
-                    onClick={() => go(item.id)}
-                    initial={{ y: 16, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.04 * i }}
-                    className="font-display w-full py-1 text-left text-3xl text-[#F5F1E6] sm:text-4xl"
-                  >
-                    {item.label}
-                  </motion.button>
-                  {item.id === "courses"
-                    ? site.navCourses.map((course) => (
-                        <button
-                          key={course.id}
+      {typeof document !== "undefined"
+        ? createPortal(
+            <AnimatePresence>
+              {open ? (
+                <motion.div
+                  className="fixed inset-0 z-[60] flex h-dvh w-full flex-col overflow-y-auto overscroll-contain bg-[var(--background)] px-6 pt-[calc(5.5rem+env(safe-area-inset-top))] pb-[calc(2rem+env(safe-area-inset-bottom))] sm:px-8 xl:hidden"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <nav className="flex flex-col gap-1" aria-label="Mobile">
+                    {site.nav.map((item, i) => (
+                      <div key={item.id}>
+                        <motion.button
                           type="button"
-                          onClick={() => pickCourse(course.id)}
-                          className="block w-full py-2.5 pl-1 text-left text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-[#D4AF37]"
+                          onClick={() => go(item.id)}
+                          initial={{ y: 16, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          transition={{ delay: 0.04 * i }}
+                          className="font-display w-full py-1 text-left text-3xl text-foreground sm:text-4xl"
                         >
-                          {course.navLabel}
-                        </button>
-                      ))
-                    : null}
-                </div>
-              ))}
-            </nav>
-            <div className="mt-8 flex flex-col gap-3">
-              <button
-                type="button"
-                className="btn-gold w-full"
-                onClick={() => {
-                  setOpen(false);
-                  goToEnrol();
-                }}
-              >
-                {site.ui.enrolNow}
-              </button>
-              <button
-                type="button"
-                className="btn-outline-gold w-full"
-                onClick={() => {
-                  setOpen(false);
-                  goToBooking();
-                }}
-              >
-                {site.ui.bookSalon}
-              </button>
-            </div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+                          {item.label}
+                        </motion.button>
+                        {item.id === "courses"
+                          ? site.navCourses.map((course) => (
+                              <button
+                                key={course.id}
+                                type="button"
+                                onClick={() => pickCourse(course.id)}
+                                className="block w-full py-2.5 pl-1 text-left text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-[var(--gold)]"
+                              >
+                                {course.navLabel}
+                              </button>
+                            ))
+                          : null}
+                      </div>
+                    ))}
+                  </nav>
+                  <div className="mt-8 flex flex-col gap-3 pb-4">
+                    <button
+                      type="button"
+                      className="btn-gold w-full"
+                      onClick={() => {
+                        setOpen(false);
+                        goToEnrol();
+                      }}
+                    >
+                      {site.ui.enrolNow}
+                    </button>
+                    <button
+                      type="button"
+                      className="btn-outline-gold w-full"
+                      onClick={() => {
+                        setOpen(false);
+                        goToBooking();
+                      }}
+                    >
+                      {site.ui.bookSalon}
+                    </button>
+                  </div>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>,
+            document.body,
+          )
+        : null}
     </header>
   );
 }
