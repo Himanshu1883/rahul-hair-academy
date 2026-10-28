@@ -24,6 +24,7 @@ export function AutoplayVideo({
       preload="auto"
       controls={false}
       disablePictureInPicture
+      disableRemotePlayback
       className={className}
       aria-label={label}
     />

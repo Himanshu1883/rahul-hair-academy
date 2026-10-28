@@ -1,3 +1,4 @@
+import { useNavigate, useRouterState } from "@tanstack/react-router";
 import {
   createContext,
   useCallback,
@@ -8,6 +9,7 @@ import {
   type ReactNode,
 } from "react";
 
+import { getCourseById } from "@/content";
 import { scrollToId, setLenis } from "@/lib/lenis";
 import { preloadSiteMedia } from "@/lib/preload-media";
 import { useReducedMotion } from "@/hooks/media";
@@ -33,6 +35,9 @@ const Ctx = createContext<SiteCtx | null>(null);
 export function SiteProvider({ children }: { children: ReactNode }) {
   const { theme, toggleTheme } = useTheme();
   const reducedMotion = useReducedMotion();
+  const navigate = useNavigate();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const hash = useRouterState({ select: (s) => s.location.hash });
   const [preloaderDone, setPreloaderDone] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [prefilledCourseId, setPrefilledCourseId] = useState("");
@@ -82,9 +87,20 @@ export function SiteProvider({ children }: { children: ReactNode }) {
   }, [reducedMotion]);
 
   useEffect(() => {
+    const id = (hash || "").replace(/^#/, "");
+    if (pathname !== "/" || !id) return;
+    const timer = window.setTimeout(() => scrollToId(id), 80);
+    return () => window.clearTimeout(timer);
+  }, [pathname, hash, preloaderDone]);
+
+  useEffect(() => {
+    if (pathname !== "/") {
+      setActiveSection(pathname.startsWith("/courses/") ? "courses" : "");
+      return;
+    }
     const ids = ["home", "academy", "courses", "salon", "gallery", "reviews", "contact", "enrol"];
     const els = ids
-      .map((id) => document.getElementById(id))
+      .map((sectionId) => document.getElementById(sectionId))
       .filter((el): el is HTMLElement => !!el);
     if (!els.length) return;
     const io = new IntersectionObserver(
@@ -98,32 +114,54 @@ export function SiteProvider({ children }: { children: ReactNode }) {
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, [preloaderDone]);
+  }, [preloaderDone, pathname]);
 
-  const goTo = useCallback((id: string) => {
-    scrollToId(id);
-  }, []);
+  const goTo = useCallback(
+    (id: string) => {
+      if (pathname === "/") {
+        scrollToId(id);
+        return;
+      }
+      void navigate({ to: "/", hash: id });
+    },
+    [navigate, pathname],
+  );
 
   const goToEnrol = useCallback(
     (courseId?: string) => {
       if (courseId) setPrefilledCourseId(courseId);
-      scrollToId("enrol");
+      if (pathname === "/") {
+        scrollToId("enrol");
+        return;
+      }
+      void navigate({ to: "/", hash: "enrol" });
     },
-    [],
+    [navigate, pathname],
   );
 
-  const goToCourse = useCallback((courseId: string) => {
-    setPrefilledCourseId(courseId);
-    window.setTimeout(() => {
-      const target = `course-${courseId}`;
-      scrollToId(document.getElementById(target) ? target : "courses");
-    }, 80);
-  }, []);
+  const goToCourse = useCallback(
+    (courseId: string) => {
+      const course = getCourseById(courseId);
+      if (!course) {
+        goTo("courses");
+        return;
+      }
+      void navigate({ to: "/courses/$slug", params: { slug: course.slug } });
+    },
+    [goTo, navigate],
+  );
 
-  const goToBooking = useCallback((service?: string) => {
-    if (service) setPrefilledService(service);
-    scrollToId("booking");
-  }, []);
+  const goToBooking = useCallback(
+    (service?: string) => {
+      if (service) setPrefilledService(service);
+      if (pathname === "/") {
+        scrollToId("booking");
+        return;
+      }
+      void navigate({ to: "/", hash: "booking" });
+    },
+    [navigate, pathname],
+  );
 
   const value = useMemo<SiteCtx>(
     () => ({

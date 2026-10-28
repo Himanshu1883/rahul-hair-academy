@@ -1,91 +1,102 @@
+import { Check } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { SmartImage } from "@/components/site/SmartImage";
-import { useMediaQuery, useReducedMotion } from "@/hooks/media";
+import { useReducedMotion } from "@/hooks/media";
 import { site } from "@/content";
 import { cn } from "@/lib/utils";
 
+const AUTO_MS = 5500;
+
 export function Journey() {
-  const pin = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
-  const desktop = useMediaQuery("(min-width: 1024px)");
+  const rootRef = useRef<HTMLElement>(null);
+  const [inView, setInView] = useState(false);
   const [stage, setStage] = useState(0);
   const current = site.journey.stages[stage] ?? site.journey.stages[0];
+  const total = site.journey.stages.length;
 
   useEffect(() => {
-    if (reduced || !desktop) return;
-    const el = pin.current;
+    const el = rootRef.current;
     if (!el) return;
-    let st: { kill: () => void } | undefined;
-    void (async () => {
-      const gsap = (await import("gsap")).gsap;
-      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-      gsap.registerPlugin(ScrollTrigger);
-      st = ScrollTrigger.create({
-        trigger: el,
-        start: "top top",
-        end: "+=280%",
-        pin: true,
-        scrub: 0.6,
-        onUpdate: (self) => {
-          const i = Math.min(site.journey.stages.length - 1, Math.floor(self.progress * site.journey.stages.length));
-          setStage(i);
-        },
-      });
-    })();
-    return () => st?.kill();
-  }, [reduced, desktop]);
+    const io = new IntersectionObserver(
+      ([entry]) => setInView(!!entry?.isIntersecting),
+      { threshold: 0.35 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!inView || reduced) return;
+    const timer = window.setInterval(() => {
+      setStage((s) => (s + 1) % total);
+    }, AUTO_MS);
+    return () => window.clearInterval(timer);
+  }, [inView, reduced, total, stage]);
 
   return (
-    <section className="section-y px-4 md:px-8 lg:px-12">
+    <section ref={rootRef} className="section-y px-4 md:px-8 lg:px-12">
       <div className="w-full">
-        <SectionHeader label={site.journey.label} title={site.journey.title} align="center" />
+        <SectionHeader
+          label={site.journey.label}
+          title={site.journey.title}
+          lead={site.journey.lead}
+          align="center"
+        />
       </div>
-      <div ref={pin} className="mt-8 flex w-full flex-col justify-center lg:min-h-[70vh]">
-        {desktop && !reduced ? (
-          <div className="grid items-center gap-10 lg:grid-cols-2">
-            <div>
-              <p className="font-display text-7xl gold-text md:text-9xl">{current?.no}</p>
-              <h3 className="mt-4 font-display text-4xl md:text-5xl">{current?.title}</h3>
-              <p className="mt-4 max-w-md text-muted-foreground">{current?.text}</p>
-              <div className="mt-8 h-[2px] w-full bg-[var(--border)]">
-                <div
-                  className="h-full bg-[var(--gold-gradient)] transition-[width] duration-500"
-                  style={{ width: `${((stage + 1) / site.journey.stages.length) * 100}%` }}
-                />
-              </div>
-              <ol className="mt-6 flex gap-4 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-                {site.journey.stages.map((s, i) => (
-                  <li key={s.no} className={cn(i === stage && "text-[var(--gold)]")}>
-                    {s.no}
-                  </li>
-                ))}
-              </ol>
-            </div>
-            <div className="frame-gold overflow-hidden">
-              {current ? (
-                <SmartImage src={current.image} alt={current.title} width={1200} height={900} className="aspect-[4/3]" />
-              ) : null}
-            </div>
-          </div>
-        ) : (
-          <div className="grid gap-8 md:grid-cols-2">
-            {site.journey.stages.map((s, i) => (
-              <Reveal key={s.no} delay={i * 80}>
-                <article className="card-lux overflow-hidden">
-                  <SmartImage src={s.image} alt={s.title} width={800} height={600} className="aspect-[16/10]" />
-                  <div className="p-6">
-                    <p className="font-display text-4xl gold-text">{s.no}</p>
-                    <h3 className="mt-2 font-display text-2xl">{s.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">{s.text}</p>
-                  </div>
-                </article>
-              </Reveal>
+
+      <div className="mt-10 grid items-stretch gap-8 lg:grid-cols-2 lg:gap-12">
+        <div className="flex flex-col justify-center">
+          <p className="font-display text-6xl text-[var(--gold)] sm:text-8xl">{current?.no}</p>
+          <h3 className="mt-3 font-display text-3xl leading-tight sm:text-4xl">{current?.title}</h3>
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">{current?.text}</p>
+          <ul className="mt-6 space-y-3">
+            {current?.points.map((point) => (
+              <li key={point} className="flex gap-3 text-sm leading-relaxed">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--gold)]" />
+                {point}
+              </li>
             ))}
+          </ul>
+
+          <div className="mt-8 h-[2px] overflow-hidden bg-[var(--border)]">
+            <div key={stage} className="journey-fill h-full bg-[var(--gold-gradient)]" />
           </div>
-        )}
+
+          <ol className="mt-5 flex flex-wrap gap-2">
+            {site.journey.stages.map((s, i) => (
+              <li key={s.no}>
+                <button
+                  type="button"
+                  onClick={() => setStage(i)}
+                  aria-pressed={i === stage}
+                  className={cn(
+                    "min-h-11 min-w-14 rounded-full border px-4 text-xs font-semibold tracking-[0.18em] uppercase transition-colors",
+                    i === stage
+                      ? "border-[var(--gold)] bg-gold-grad text-[#0B0B0B]"
+                      : "border-[var(--border)] text-muted-foreground hover:border-[var(--gold)] hover:text-[var(--gold)]",
+                  )}
+                >
+                  {s.no}
+                </button>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div className="frame-gold overflow-hidden">
+          {current ? (
+            <SmartImage
+              src={current.image}
+              alt={current.title}
+              width={1200}
+              height={900}
+              className="aspect-[4/3] h-full min-h-[16rem] w-full object-cover lg:min-h-[28rem]"
+            />
+          ) : null}
+        </div>
       </div>
     </section>
   );

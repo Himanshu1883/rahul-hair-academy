@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -12,7 +13,7 @@ import { startLenis, stopLenis } from "@/lib/lenis";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
-  const { theme, toggleTheme, goTo, goToEnrol, goToCourse, goToBooking, activeSection } = useSite();
+  const { theme, toggleTheme, goTo, goToEnrol, goToBooking, activeSection } = useSite();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [coursesOpen, setCoursesOpen] = useState(false);
@@ -71,12 +72,6 @@ export function Navbar() {
     goTo(id);
   };
 
-  const pickCourse = (courseId: string) => {
-    setOpen(false);
-    setCoursesOpen(false);
-    goToCourse(courseId);
-  };
-
   return (
     <header
       className={cn(
@@ -130,14 +125,18 @@ export function Navbar() {
                 >
                   <div className="border border-[var(--border)] bg-[var(--surface)] py-2 shadow-[var(--shadow-lux)]">
                     {site.navCourses.map((course) => (
-                      <button
+                      <Link
                         key={course.id}
-                        type="button"
-                        onClick={() => pickCourse(course.id)}
+                        to="/courses/$slug"
+                        params={{ slug: course.slug }}
+                        onClick={() => {
+                          setOpen(false);
+                          setCoursesOpen(false);
+                        }}
                         className="block w-full px-5 py-3 text-left text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-foreground hover:bg-[var(--background)] hover:text-[var(--gold)]"
                       >
                         {course.navLabel}
-                      </button>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -219,14 +218,18 @@ export function Navbar() {
                         </motion.button>
                         {item.id === "courses"
                           ? site.navCourses.map((course) => (
-                              <button
+                              <Link
                                 key={course.id}
-                                type="button"
-                                onClick={() => pickCourse(course.id)}
+                                to="/courses/$slug"
+                                params={{ slug: course.slug }}
+                                onClick={() => {
+                                  setOpen(false);
+                                  setCoursesOpen(false);
+                                }}
                                 className="block w-full py-2.5 pl-1 text-left text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-[var(--gold)]"
                               >
                                 {course.navLabel}
-                              </button>
+                              </Link>
                             ))
                           : null}
                       </div>

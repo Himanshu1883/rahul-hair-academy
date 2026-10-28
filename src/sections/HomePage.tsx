@@ -1,11 +1,4 @@
-import { JsonLd } from "@/components/site/JsonLd";
-import { FloatingActions } from "@/components/chrome/FloatingActions";
-import { Footer } from "@/components/chrome/Footer";
-import { MobileStickyBar } from "@/components/chrome/MobileStickyBar";
-import { Navbar } from "@/components/chrome/Navbar";
-import { Preloader } from "@/components/chrome/Preloader";
-import { ScrollProgress } from "@/components/chrome/ScrollProgress";
-import { SiteProvider } from "@/hooks/site-context";
+import { SiteChrome } from "@/components/chrome/SiteChrome";
 import { About } from "@/sections/About";
 import { BeforeAfter } from "@/sections/BeforeAfter";
 import { Booking } from "@/sections/Booking";
@@ -26,33 +19,24 @@ import { Testimonials } from "@/sections/Testimonials";
 
 export function HomePage() {
   return (
-    <SiteProvider>
-      <JsonLd />
-      <Preloader />
-      <ScrollProgress />
-      <Navbar />
-      <main className="overflow-x-clip pb-[calc(5.5rem+env(safe-area-inset-bottom))] md:pb-0">
-        <Hero />
-        <Marquee />
-        <About />
-        <Highlights />
-        <Courses />
-        <Journey />
-        <Gallery />
-        <BeforeAfter />
-        <Services />
-        <Team />
-        <Certification />
-        <Enrol />
-        <Booking />
-        <Instagram />
-        <Testimonials />
-        <FAQ />
-        <Contact />
-      </main>
-      <Footer />
-      <FloatingActions />
-      <MobileStickyBar />
-    </SiteProvider>
+    <SiteChrome withPreloader>
+      <Hero />
+      <Marquee />
+      <About />
+      <Highlights />
+      <Courses />
+      <Journey />
+      <Gallery />
+      <BeforeAfter />
+      <Services />
+      <Team />
+      <Certification />
+      <Enrol />
+      {/* <Booking /> */}
+      <Instagram />
+      <Testimonials />
+      <FAQ />
+      <Contact />
+    </SiteChrome>
   );
 }

@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import { ArrowUp } from "lucide-react";
 
@@ -9,7 +10,7 @@ import { useSite } from "@/hooks/site-context";
 import { site, telLink, waLink } from "@/content";
 
 export function Footer() {
-  const { goTo, goToCourse } = useSite();
+  const { goTo } = useSite();
   const fillRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -60,9 +61,9 @@ export function Footer() {
           <ul className="space-y-2 text-sm">
             {site.navCourses.map((course) => (
               <li key={course.id}>
-                <button type="button" className="text-left hover:text-[var(--gold)]" onClick={() => goToCourse(course.id)}>
+                <Link to="/courses/$slug" params={{ slug: course.slug }} className="text-left hover:text-[var(--gold)]">
                   {course.navLabel}
-                </button>
+                </Link>
               </li>
             ))}
           </ul>

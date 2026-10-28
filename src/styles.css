@@ -375,6 +375,21 @@ html.light .nav-link:hover {
   to { transform: scale(1.18); }
 }
 
+@keyframes journey-fill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+.journey-fill {
+  width: 0;
+  animation: journey-fill 5.5s linear forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .journey-fill {
+    animation: none;
+    width: 100%;
+  }
+}
+
 .animate-crown-float { animation: crown-float 6s ease-in-out infinite; }
 .animate-pulse-gold { animation: pulse-gold 2.4s ease-out infinite; }
 .animate-spin-slow { animation: spin-slow 18s linear infinite; }
@@ -491,23 +506,9 @@ html.light .logo-img {
   align-items: center;
   transition: color 0.3s ease;
 }
-.nav-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 8px;
-  height: 1px;
-  width: 0;
-  background: var(--gold-gradient);
-  transition: width 0.35s ease;
-}
 .nav-link:hover,
 .nav-link.is-active {
   color: var(--gold);
-}
-.nav-link:hover::after,
-.nav-link.is-active::after {
-  width: 100%;
 }
 
 .marquee-track {

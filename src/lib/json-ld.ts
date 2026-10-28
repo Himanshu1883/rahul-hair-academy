@@ -11,11 +11,12 @@ export function buildJsonLd() {
       sameAs: site.instagram.url,
     },
     educationalLevel: course.level,
-    ...(/^\d/.test(course.fee)
+    url: `/courses/${course.slug}`,
+    ...("feeAmount" in course
       ? {
           offers: {
             "@type": "Offer",
-            price: course.fee,
+            price: course.feeAmount,
             priceCurrency: "INR",
           },
         }
