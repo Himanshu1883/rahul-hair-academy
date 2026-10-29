@@ -91,7 +91,7 @@ export const site = {
   navCourses: [
     { id: "colour-masterclass-2d", slug: "2-days-colour-masterclass", navLabel: "2 Days Masterclass + Workshop" },
     { id: "chemical-7d", slug: "7-days-advance-chemical", navLabel: "7 Days Advance Chemical" },
-    { id: "chemical-1m", slug: "1-month-advance-chemical", navLabel: "1 Month Advance Chemical" },
+    { id: "chemical-1m", slug: "4-weeks-advance-chemical", navLabel: "4 Weeks Advance Chemical" },
     { id: "chemical-cut-12w", slug: "12-weeks-chemical-haircut", navLabel: "12 Weeks Chemical & Hair Cut" },
   ],
 
@@ -111,6 +111,7 @@ export const site = {
     enrolThisCourse: "Enrol in this course",
     bookThis: "Book this",
     followIg: "Follow on Instagram",
+    chooseInstagram: "Choose Instagram",
     downloadBrochure: "Download Brochure",
     scroll: "Scroll",
     backToTop: "Back to top",
@@ -154,6 +155,18 @@ export const site = {
   },
 
   instagram: {
+    accounts: [
+      {
+        name: "Rahul Hair Academy",
+        handle: "@rahul_hairacademy",
+        url: "https://www.instagram.com/rahul_hairacademy/",
+      },
+      {
+        name: "Rahul Kumar",
+        handle: "@rahulkumar7874kkc",
+        url: "https://www.instagram.com/rahulkumar7874kkc/",
+      },
+    ],
     handle: "@rahul_hairacademy",
     url: "https://www.instagram.com/rahul_hairacademy/",
     // Editable stats — do NOT hardcode live numbers anywhere else
@@ -205,7 +218,7 @@ export const site = {
       book: "Book Salon Appointment",
     },
     badges: [
-      "2-Day · 7-Day · 1-Month · 12-Week Paths",
+      "2-Day · 7-Day · 4-Week · 12-Week Paths",
       "100% Practical Training",
       "Certificate of Completion",
     ],
@@ -238,7 +251,7 @@ export const site = {
     lead: "Great hair doesn’t happen by chance — it happens by a skilled hairdresser.",
     story: [
       "It begins with passion — the pull of the scissors, the theatre of a transformation.",
-      "It grows through education — a 2-day colour masterclass, 7-day and 1-month chemical intensives, and a 12-week chemical plus hair-cut programme, practised on the floor until the science and the hands agree.",
+      "It grows through education — a 2-day colour masterclass, 7-day and 4-week chemical intensives, and a 12-week chemical plus hair-cut programme, practised on the floor until the science and the hands agree.",
       "It ends in mastery — a certificate, placement guidance, and a career that belongs to you.",
     ],
     classroomImage: salonFloor,
@@ -255,7 +268,7 @@ export const site = {
     title: "Academy Highlights",
     items: [
       { icon: "scissors", title: "Hands-on Practical Training", text: "Every technique practised, not just demonstrated — scissors in hand from day one, including live-model sessions." },
-      { icon: "layers", title: "Four Clear Paths", text: "A 2-day colour masterclass, 7-day and 1-month chemical intensives, and a 12-week chemical plus hair-cut programme." },
+      { icon: "layers", title: "Four Clear Paths", text: "A 2-day colour masterclass, 7-day and 4-week chemical intensives, and a 12-week chemical plus hair-cut programme." },
       { icon: "users", title: "Limited Seats Per Batch", text: "Small groups so every student gets personal attention on the floor." },
       { icon: "award", title: "Industry-Experienced Trainers", text: "Learn from professionals who work the chair every day." },
       { icon: "sparkles", title: "100% Practical Training", text: "Live demos, hands-on practice and client consultation — not just theory on a slide." },
@@ -266,7 +279,7 @@ export const site = {
   courses: {
     label: "COURSES",
     title: "Learn the Craft. Own the Chair.",
-    lead: "Four professional programmes — 2-day colour masterclass, 7 days, 1 month or 12 weeks. Offline in Dwarka Sector 7, with live practicals, government-affiliated certification and 100% job assistance.",
+    lead: "Four professional programmes — 2-day colour masterclass, 7 days, 4 weeks or 12 weeks. Offline in Dwarka Sector 7, with live practicals, government-affiliated certification and 100% job assistance.",
     batches: "Admission open — limited seats — enrol now",
     promo: {
       tagline: "LEARN · PRACTICE · MASTER · SUCCEED",
@@ -348,13 +361,13 @@ export const site = {
       },
       {
         id: "chemical-1m",
-        slug: "1-month-advance-chemical",
-        navLabel: "1 Month Advance Chemical",
-        title: "1 Month Advance Chemical Course",
+        slug: "4-weeks-advance-chemical",
+        navLabel: "4 Weeks Advance Chemical",
+        title: "4 Weeks Advance Chemical Course",
         level: "advanced",
         image: courseColour,
         isStock: true, // REPLACE WITH CLIENT PHOTO
-        duration: "1 month",
+        duration: "4 weeks",
         schedule: "Mon–Sat, 10:00 AM – 5:00 PM",
         mode: "Offline",
         fee: "₹39,999/-",
@@ -622,9 +635,9 @@ export const site = {
       },
     ],
     comparison: {
-      columns: ["2-Day Colour", "7 Days Chemical", "1 Month Chemical", "12 Weeks Chemical & Cut"],
+      columns: ["2-Day Colour", "7 Days Chemical", "4 Weeks Chemical", "12 Weeks Chemical & Cut"],
       rows: [
-        { label: "Duration", values: ["2 days", "7 days", "1 month", "12 weeks"] },
+        { label: "Duration", values: ["2 days", "7 days", "4 weeks", "12 weeks"] },
         { label: "Fee", values: ["₹12,999/-", "₹24,999/-", "₹39,999/-", "₹74,999/-"] },
         { label: "Colour training", values: ["✓ Masterclass", "✓", "✓ Advance", "✓"] },
         { label: "Chemical training", values: ["—", "✓ Intensive", "✓ Advance", "✓ Basic to advance"] },
@@ -643,11 +656,11 @@ export const site = {
       {
         no: "01",
         title: "Choose your programme",
-        text: "Start where you are. A 2-day colour masterclass, a 7-day or 1-month chemical intensive, or the 12-week chemical and hair-cut path — all offline in Dwarka Sector 7.",
+        text: "Start where you are. A 2-day colour masterclass, a 7-day or 4-week chemical intensive, or the 12-week chemical and hair-cut path — all offline in Dwarka Sector 7.",
         points: [
           "2 Days Masterclass + Workshop — ₹12,999/-",
           "7 Days Advance Chemical — ₹24,999/-",
-          "1 Month Advance Chemical — ₹39,999/-",
+          "4 Weeks Advance Chemical — ₹39,999/-",
           "12 Weeks Chemical & Hair Cut — ₹74,999/-",
         ],
         image: workMensCut,
@@ -935,9 +948,9 @@ export const site = {
     label: "FAQ",
     title: "Questions, Answered",
     academy: [
-      { q: "Who can join the academy?", a: "Hair stylists, salon professionals, students, and anyone passionate about hair. Start with the 2-day colour masterclass, then 7-day or 1-month chemical intensives, or the 12-week chemical and hair-cut programme." },
-      { q: "How long are the courses?", a: "2 days (colour masterclass + workshop), 7 days (advance chemical), 1 month (advance chemical) or 12 weeks (chemical and hair cut). Academy hours are Monday to Saturday, 10:00 AM – 5:00 PM." },
-      { q: "What are the fees? Are instalments available?", a: "2 Days Masterclass + Workshop is ₹12,999/-, 7 Days Advance Chemical is ₹24,999/-, 1 Month Advance Chemical is ₹39,999/-, and 12 Weeks Chemical & Hair Cut is ₹74,999/-. Call or WhatsApp 09582557260 for batch dates and any instalment options." },
+      { q: "Who can join the academy?", a: "Hair stylists, salon professionals, students, and anyone passionate about hair. Start with the 2-day colour masterclass, then 7-day or 4-week chemical intensives, or the 12-week chemical and hair-cut programme." },
+      { q: "How long are the courses?", a: "2 days (colour masterclass + workshop), 7 days (advance chemical), 4 weeks (advance chemical) or 12 weeks (chemical and hair cut). Academy hours are Monday to Saturday, 10:00 AM – 5:00 PM." },
+      { q: "What are the fees? Are instalments available?", a: "2 Days Masterclass + Workshop is ₹12,999/-, 7 Days Advance Chemical is ₹24,999/-, 4 Weeks Advance Chemical is ₹39,999/-, and 12 Weeks Chemical & Hair Cut is ₹74,999/-. Call or WhatsApp 09582557260 for batch dates and any instalment options." },
       { q: "Do I get a certificate?", a: "Yes — a government-affiliated certificate on successful completion, with 100% job assistance on every programme." },
       { q: "Is a kit included?", a: "Training is 100% practical with academy products on the floor. Ask us if you want a personal toolkit quote for the chair." },
       { q: "When do new batches start?", a: "Seats are limited per batch. Send an enrolment enquiry and we will share the next start date." },

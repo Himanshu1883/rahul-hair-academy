@@ -8,7 +8,7 @@ export function buildJsonLd() {
     provider: {
       "@type": "EducationalOrganization",
       name: site.brand,
-      sameAs: site.instagram.url,
+      sameAs: site.instagram.accounts.map((a) => a.url),
     },
     educationalLevel: course.level,
     url: `/courses/${course.slug}`,
@@ -37,14 +37,14 @@ export function buildJsonLd() {
       "@type": "EducationalOrganization",
       name: site.brand,
       description: site.seo.description,
-      sameAs: [site.instagram.url],
+      sameAs: site.instagram.accounts.map((a) => a.url),
       hasCourse: courses,
     },
     {
       "@type": "HairSalon",
       name: `${site.brand} Salon`,
       description: site.hero.subline,
-      sameAs: [site.instagram.url],
+      sameAs: site.instagram.accounts.map((a) => a.url),
       ...(telE164() ? { telephone: telE164() } : {}),
       ...(address ? { address } : {}),
       geo: {

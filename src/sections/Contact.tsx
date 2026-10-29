@@ -1,6 +1,6 @@
 import { MapPin, Phone } from "lucide-react";
 
-import { InstagramIcon, WhatsAppIcon } from "@/components/brand/SocialIcons";
+import { WhatsAppIcon } from "@/components/brand/SocialIcons";
 
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
@@ -30,12 +30,6 @@ export function Contact() {
               <MapPin className="h-5 w-5 shrink-0 text-[var(--gold)]" />
               <a href={site.contact.mapsLink} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--gold)]">
                 {site.contact.address}, {site.contact.city}
-              </a>
-            </li>
-            <li className="flex items-center gap-3">
-              <InstagramIcon className="h-5 w-5 shrink-0" />
-              <a href={site.instagram.url} target="_blank" rel="noopener noreferrer">
-                {site.instagram.handle}
               </a>
             </li>
           </ul>

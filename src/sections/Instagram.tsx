@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 import { Logo } from "@/components/brand/Logo";
-import { InstagramIcon } from "@/components/brand/SocialIcons";
 import { AutoplayVideo } from "@/components/site/AutoplayVideo";
+import { IgAccounts } from "@/components/site/IgAccounts";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { site } from "@/content";
@@ -39,10 +39,7 @@ export function Instagram() {
         ) : null}
 
         <div className="mt-5 flex justify-center">
-          <a href={site.instagram.url} target="_blank" rel="noopener noreferrer" className="btn-gold">
-            <InstagramIcon className="h-4 w-4" />
-            {site.ui.followIg}
-          </a>
+          <IgAccounts iconClassName="h-10 w-10" />
         </div>
       </div>
     </section>

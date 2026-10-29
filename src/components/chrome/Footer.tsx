@@ -3,8 +3,8 @@ import { useEffect, useRef } from "react";
 import { ArrowUp } from "lucide-react";
 
 import { Logo } from "@/components/brand/Logo";
-import { InstagramIcon, WhatsAppIcon } from "@/components/brand/SocialIcons";
-import { IgLink } from "@/components/site/IgLink";
+import { WhatsAppIcon } from "@/components/brand/SocialIcons";
+import { IgAccounts } from "@/components/site/IgAccounts";
 import { OpeningHours } from "@/components/site/OpeningHours";
 import { useSite } from "@/hooks/site-context";
 import { site, telLink, waLink } from "@/content";
@@ -40,9 +40,7 @@ export function Footer() {
         <div>
           <Logo variant="full" className="h-16 sm:h-24" />
           <p className="mt-4 max-w-xs text-sm text-muted-foreground">{site.tagline}</p>
-          <IgLink showIcon className="mt-4 text-sm text-[var(--gold)]">
-            {site.instagram.handle}
-          </IgLink>
+          <IgAccounts className="mt-4" iconClassName="h-8 w-8" />
         </div>
         <div>
           <p className="section-label mb-4">Explore</p>
@@ -87,12 +85,6 @@ export function Footer() {
             </li>
             <li>
               <OpeningHours compact />
-            </li>
-            <li>
-              <a href={site.instagram.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
-                <InstagramIcon className="h-5 w-5" />
-                {site.instagram.handle}
-              </a>
             </li>
           </ul>
         </div>

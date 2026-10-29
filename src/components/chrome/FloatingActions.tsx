@@ -1,4 +1,5 @@
 import { InstagramIcon, WhatsAppIcon } from "@/components/brand/SocialIcons";
+import { IgChooser } from "@/components/site/IgChooser";
 import { site, waLink } from "@/content";
 
 export function FloatingActions() {
@@ -13,15 +14,14 @@ export function FloatingActions() {
       >
         <WhatsAppIcon className="h-12 w-12" />
       </a>
-      <a
-        href={site.instagram.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-[0.9rem] shadow-lg"
-        aria-label={site.instagram.handle}
-      >
-        <InstagramIcon className="h-12 w-12" />
-      </a>
+      <IgChooser
+        panelAlign="left"
+        trigger={
+          <span className="inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-[0.9rem] shadow-lg">
+            <InstagramIcon className="h-12 w-12" />
+          </span>
+        }
+      />
     </div>
   );
 }

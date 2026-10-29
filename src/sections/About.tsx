@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-import { IgLink } from "@/components/site/IgLink";
 import { PlaceholderText } from "@/components/site/PlaceholderText";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
@@ -95,9 +94,16 @@ export function About() {
           <p className="mt-2.5 text-sm text-[var(--gold)]">
             — <PlaceholderText value={site.founder.name} />, {site.founder.title}
           </p>
-          <IgLink className="mt-1.5 text-sm text-[var(--gold)]" showIcon>
-            {site.instagram.handle} · {site.instagram.followersLabel}
-          </IgLink>
+          <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-[var(--gold)]">
+            {site.instagram.accounts.map((account, i) => (
+              <span key={account.url} className="inline-flex items-center gap-3">
+                {i > 0 ? <span className="text-muted-foreground" aria-hidden="true">·</span> : null}
+                <a href={account.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                  {account.name}
+                </a>
+              </span>
+            ))}
+          </p>
 
           <dl className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {site.about.stats.map((stat) => (

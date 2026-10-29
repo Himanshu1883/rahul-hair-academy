@@ -1,6 +1,6 @@
-import { InstagramIcon } from "@/components/brand/SocialIcons";
 import { useEffect, useState } from "react";
 
+import { InstagramIcon } from "@/components/brand/SocialIcons";
 import { Crown } from "@/components/brand/Crown";
 import { Magnetic } from "@/components/site/Magnetic";
 import { SmartImage } from "@/components/site/SmartImage";

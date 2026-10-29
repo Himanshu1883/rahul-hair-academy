@@ -6,6 +6,7 @@ import { createPortal } from "react-dom";
 
 import { Logo } from "@/components/brand/Logo";
 import { InstagramIcon } from "@/components/brand/SocialIcons";
+import { IgChooser } from "@/components/site/IgChooser";
 import { Magnetic } from "@/components/site/Magnetic";
 import { useSite } from "@/hooks/site-context";
 import { site } from "@/content";
@@ -155,15 +156,15 @@ export function Navbar() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-0.5 sm:gap-1 md:gap-2">
-          <a
-            href={site.instagram.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={site.instagram.handle}
-            className="hidden h-11 w-11 items-center justify-center overflow-hidden rounded-[0.7rem] sm:inline-flex"
-          >
-            <InstagramIcon className="h-7 w-7" />
-          </a>
+          <IgChooser
+            className="hidden sm:block"
+            panelAlign="right"
+            trigger={
+              <span className="inline-flex h-11 w-11 items-center justify-center overflow-hidden rounded-[0.7rem]">
+                <InstagramIcon className="h-7 w-7" />
+              </span>
+            }
+          />
           <button
             type="button"
             onClick={toggleTheme}
