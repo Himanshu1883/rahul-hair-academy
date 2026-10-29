@@ -27,7 +27,7 @@ export function Team() {
               <article className="card-lux group flex h-full flex-col overflow-hidden p-4">
                 <div className="overflow-hidden rounded-2xl border border-transparent transition-all duration-500 group-hover:border-[var(--gold)] group-hover:outline group-hover:outline-1 group-hover:outline-offset-4 group-hover:outline-[var(--gold)]">
                   {member.photo ? (
-                    <SmartImage src={member.photo} alt={member.name} width={900} height={1125} className="aspect-[4/5]" />
+                    <SmartImage src={member.photo} alt={member.name} width={900} height={1125} className="aspect-[4/5] object-cover object-[center_12%]" />
                   ) : (
                     <div className="flex aspect-[4/5] items-center justify-center bg-black">
                       <Logo variant="mono" className="h-24" />

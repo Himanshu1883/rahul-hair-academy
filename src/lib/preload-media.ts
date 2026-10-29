@@ -4,7 +4,8 @@ export function preloadSiteMedia() {
   const images = [
     brandAssets.logoFull,
     brandAssets.logoMonogram,
-    ...site.hero.slideshow.map((s) => s.src),
+    site.hero.images.dark.src,
+    site.hero.images.light.src,
     site.founder.portrait,
     site.about.classroomImage,
     ...site.courses.items.map((c) => c.image),
@@ -12,6 +13,7 @@ export function preloadSiteMedia() {
     ...site.journey.stages.map((s) => s.image),
     ...site.team.members.map((m) => m.photo).filter(Boolean),
     site.services.image,
+    site.certification.certificateImage,
   ].filter(Boolean);
 
   for (const src of new Set(images)) {

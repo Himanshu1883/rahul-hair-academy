@@ -51,22 +51,22 @@ export function About() {
   return (
     <section
       id="academy"
-      className="relative flex min-h-0 items-center overflow-x-clip px-4 py-8 md:px-8 lg:h-svh lg:max-h-svh lg:px-12 lg:py-8"
+      className="relative overflow-x-clip px-4 py-12 md:px-8 md:py-16 lg:px-12 lg:py-20"
     >
-      <div className="grid w-full items-center gap-5 lg:grid-cols-2 lg:gap-8">
-        <Reveal className="relative img-wipe max-w-[22rem] lg:max-w-[26rem]">
-          <div className="frame-gold overflow-hidden rounded-2xl">
+      <div className="grid w-full items-center gap-8 lg:grid-cols-2 lg:gap-12">
+        <Reveal className="relative img-wipe mx-auto w-full max-w-lg lg:mx-0 lg:max-w-none">
+          <div className="frame-gold overflow-hidden rounded-2xl bg-black">
             <SmartImage
               src={site.founder.portrait}
               alt={site.founder.name}
-              width={720}
-              height={720}
+              width={900}
+              height={1200}
               priority
-              className="aspect-square max-h-[min(26rem,calc(100svh-10rem))] w-full object-contain"
+              className="h-auto w-full object-contain"
             />
           </div>
-          <div className="absolute right-2 bottom-2 w-20 overflow-hidden rounded-2xl border border-[var(--border)] shadow-[var(--shadow-lux)] sm:w-24">
-            <SmartImage src={site.about.classroomImage} alt="Academy classroom" width={480} height={360} />
+          <div className="absolute right-3 bottom-3 w-24 overflow-hidden rounded-2xl border border-[var(--border)] shadow-[var(--shadow-lux)] sm:w-28 md:w-32">
+            <SmartImage src={site.about.classroomImage} alt="Salon floor at Rahul Hair Academy" width={480} height={360} />
           </div>
           <div className="absolute left-2 top-3 h-14 w-14 sm:h-20 sm:w-20">
             <div className="badge-spin relative h-full w-full">

@@ -9,22 +9,23 @@
 
 import logoFull from "@/assets/brand/logo_full_transparent.webp";
 import logoMonogram from "@/assets/brand/logo_monogram.webp";
-import ig1 from "@/assets/brand/ig_1.webp";
-import ig2 from "@/assets/brand/ig_2.webp";
-import ig3 from "@/assets/brand/ig_3.webp";
-import ig4 from "@/assets/brand/ig_4.webp";
-import ig5 from "@/assets/brand/ig_5.webp";
-import ig6 from "@/assets/brand/ig_6.webp";
-import heroSalon from "@/assets/stock/hero-salon.jpg";
-import heroStyling from "@/assets/stock/hero-styling.jpg";
-import heroClassroom from "@/assets/stock/hero-classroom.jpg";
+import heroDark from "@/assets/brand/hero-dark.jpg";
+import heroLight from "@/assets/brand/hero-light.jpg";
+import founderAtChair from "@/assets/brand/founder-at-chair.jpg";
+import salonFloor from "@/assets/brand/salon-floor.jpg";
+import workMensCut from "@/assets/brand/work-mens-cut.jpg";
+import colourDarkWaves from "@/assets/brand/colour-dark-waves.jpg";
+import colourAshBlonde from "@/assets/brand/colour-ash-blonde.jpg";
+import colourMagenta from "@/assets/brand/colour-magenta.jpg";
+import colourBurgundy from "@/assets/brand/colour-burgundy.jpg";
+import classCaramelWaves from "@/assets/brand/class-caramel-waves.jpg";
+import classHoneyWaves from "@/assets/brand/class-honey-waves.jpg";
+import awardsRahul from "@/assets/brand/awards-rahul.jpg";
+import colourCopperSalon from "@/assets/brand/colour-copper-salon.jpg";
+import colourBurgundySalon from "@/assets/brand/colour-burgundy-salon.jpg";
 import courseColour from "@/assets/stock/course-colour.jpg";
 import courseTreatments from "@/assets/stock/course-treatments.jpg";
 import courseMaster from "@/assets/stock/course-master.jpg";
-import journeyBasics from "@/assets/stock/journey-basics.jpg";
-import journeyModel from "@/assets/stock/journey-model.jpg";
-import journeyCreate from "@/assets/stock/journey-create.jpg";
-import journeyCertified from "@/assets/stock/journey-certified.jpg";
 
 export const brandAssets = { logoFull, logoMonogram };
 
@@ -188,12 +189,12 @@ export const site = {
     name: "Rahul",
     title: "Founder & Master Educator",
     bio: "Rahul is the founder and master educator at Rahul Hair Academy in Dwarka, Delhi. He built the academy to turn passion for hair into a profession — from a 2-day colour masterclass to 12-week chemical and hair-cut training, with live practicals, a government-affiliated certificate, and 100% job assistance.",
-    portrait: ig6, // REPLACE WITH CLIENT FOUNDER PORTRAIT (currently an academy photo)
+    portrait: founderAtChair,
   },
 
   hero: {
     // Client video (reels / classroom / salon footage). Leave "" to use the
-    // Ken Burns image slideshow below. Put the file in /public/videos/.
+    // theme collage. Put the file in /public/videos/.
     video: "",
     headlineLines: ["Where Passion", "Meets Hair", "Education."],
     subline:
@@ -208,11 +209,16 @@ export const site = {
       "100% Practical Training",
       "Certificate of Completion",
     ],
-    slideshow: [
-      { src: heroSalon, alt: "Luxury salon interior with golden lighting", isStock: true }, // REPLACE WITH CLIENT PHOTO
-      { src: heroStyling, alt: "Stylist blow-drying shiny hair", isStock: true }, // REPLACE WITH CLIENT PHOTO
-      { src: heroClassroom, alt: "Students practising at the hair academy", isStock: true }, // REPLACE WITH CLIENT PHOTO
-    ],
+    images: {
+      dark: {
+        src: heroDark,
+        alt: "Rahul Hair Academy — colour and styling with Rahul and students",
+      },
+      light: {
+        src: heroLight,
+        alt: "Rahul Hair Academy — colour and styling with Rahul and students",
+      },
+    },
   },
 
   marquee: [
@@ -235,7 +241,7 @@ export const site = {
       "It grows through education — a 2-day colour masterclass, 7-day and 1-month chemical intensives, and a 12-week chemical plus hair-cut programme, practised on the floor until the science and the hands agree.",
       "It ends in mastery — a certificate, placement guidance, and a career that belongs to you.",
     ],
-    classroomImage: ig3, // REPLACE WITH CLIENT CLASSROOM PHOTO
+    classroomImage: salonFloor,
     stats: [
       { value: 500, suffix: "+", label: "Students Trained" },
       { value: 4, suffix: "", label: "Courses" },
@@ -644,8 +650,8 @@ export const site = {
           "1 Month Advance Chemical — ₹39,999/-",
           "12 Weeks Chemical & Hair Cut — ₹74,999/-",
         ],
-        image: journeyBasics,
-        isStock: true,
+        image: workMensCut,
+        isStock: false,
       },
       {
         no: "02",
@@ -657,8 +663,8 @@ export const site = {
           "Smoothing, rebonding, keratin, botox and nanoplasty",
           "Product knowledge from professional ranges",
         ],
-        image: journeyModel,
-        isStock: true,
+        image: classCaramelWaves,
+        isStock: false,
       },
       {
         no: "03",
@@ -670,8 +676,8 @@ export const site = {
           "Hair cutting and styling on the 12-week programme",
           "Client consultation and problem solving",
         ],
-        image: journeyCreate,
-        isStock: true,
+        image: founderAtChair,
+        isStock: false,
       },
       {
         no: "04",
@@ -683,8 +689,8 @@ export const site = {
           "100% job assistance",
           "Skills to join a salon or start your own",
         ],
-        image: journeyCertified,
-        isStock: true,
+        image: classHoneyWaves,
+        isStock: false,
       },
     ],
   },
@@ -695,12 +701,16 @@ export const site = {
     // ONLY real client photos below — never stock imagery.
     // Add: { src, alt, category } — categories must match filters.
     items: [
-      { src: ig1, alt: "Academy class — join our academy poster", category: "Class", isStock: false }, // REPLACE WITH CLIENT PHOTO
-      { src: ig2, alt: "Skill 1 — cutting technique poster", category: "Cuts", isStock: false },
-      { src: ig3, alt: "Skill 2 poster", category: "Class", isStock: false },
-      { src: ig4, alt: "Skill 3 poster", category: "Class", isStock: false },
-      { src: ig5, alt: "Skill 4 poster", category: "Class", isStock: false },
-      { src: ig6, alt: "Passion to profession poster", category: "Class", isStock: false },
+      { src: colourAshBlonde, alt: "Ash-blonde colour and finish", category: "Colour", isStock: false },
+      { src: workMensCut, alt: "Men's cut and finish at the academy", category: "Men", isStock: false },
+      { src: colourMagenta, alt: "Vivid magenta colour", category: "Colour", isStock: false },
+      { src: classCaramelWaves, alt: "Caramel waves from a live class", category: "Class", isStock: false },
+      { src: colourDarkWaves, alt: "Long dark waves, salon finish", category: "Colour", isStock: false },
+      { src: salonFloor, alt: "Colour service on the salon floor", category: "Colour", isStock: false },
+      { src: colourBurgundy, alt: "Burgundy colour and waves", category: "Colour", isStock: false },
+      { src: classHoneyWaves, alt: "Honey waves from academy training", category: "Class", isStock: false },
+      { src: colourCopperSalon, alt: "Copper waves finished outside the salon", category: "Colour", isStock: false },
+      { src: colourBurgundySalon, alt: "Burgundy colour on the salon floor", category: "Colour", isStock: false },
     ],
     filters: [
       { id: "all", label: "All" },
@@ -739,7 +749,7 @@ export const site = {
     label: "PREMIUM SALON",
     title: "The Salon Menu",
     tabs: ["Women", "Men", "Hair Treatments"],
-    image: courseTreatments, // section background — REPLACE WITH CLIENT PHOTO
+    image: salonFloor,
     items: [
       {
         tab: "Women",
@@ -787,7 +797,7 @@ export const site = {
         role: "Founder & Master Educator",
         specialities: "Cutting • Colour • Education",
         instagram: "https://www.instagram.com/rahul_hairacademy/",
-        photo: ig6,
+        photo: founderAtChair,
       },
     ],
   },
@@ -795,7 +805,8 @@ export const site = {
   certification: {
     label: "CERTIFICATION",
     title: "Certified. Confident. Career-Ready.",
-    certificateImage: "",
+    certificateImage: awardsRahul,
+    certificateAlt: "Arini International awards — Mr. Rahul, Trainer Behind the Trainers 2026",
     previewNote: "Government-affiliated certificate. 100% job assistance on every programme.",
     affiliations: [
       "Academy certificate on successful completion",
@@ -867,7 +878,14 @@ export const site = {
         overlay: "PASSION INTO A PROFESSIONAL SKILL",
       },
     ],
-    grid: [ig1, ig2, ig3, ig4, ig5, ig6], // real client posts — add more by pasting files
+    grid: [
+      colourAshBlonde,
+      workMensCut,
+      colourMagenta,
+      classCaramelWaves,
+      colourDarkWaves,
+      colourBurgundy,
+    ],
     gridEmptyTileText: "Follow for more",
     // Optional live feed (Behold.so / Graph API behind a proxy).
     // Set VITE_INSTAGRAM_FEED_URL in .env; empty or failing → curated grid.

@@ -93,7 +93,7 @@ export function Journey() {
               alt={current.title}
               width={1200}
               height={900}
-              className="aspect-[4/3] h-full min-h-[16rem] w-full object-cover lg:min-h-[28rem]"
+              className="aspect-[4/3] h-full min-h-[16rem] w-full object-cover object-[center_22%] lg:min-h-[28rem]"
             />
           ) : null}
         </div>

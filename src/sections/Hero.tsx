@@ -16,26 +16,16 @@ import { site } from "@/content";
  * - Mobile: image on top, copy anchored to the bottom.
  */
 export function Hero() {
-  const { goTo, goToEnrol, goToBooking, reducedMotion } = useSite();
-  const [slide, setSlide] = useState(0);
+  const { goTo, goToEnrol, goToBooking } = useSite();
   const [linesIn, setLinesIn] = useState(false);
 
-  const slides = site.hero.slideshow;
+  const images = site.hero.images;
   const hasVideo = Boolean(site.hero.video);
-  const showDots = !hasVideo && slides.length > 1;
 
   useEffect(() => {
     const t = window.setTimeout(() => setLinesIn(true), 280);
     return () => window.clearTimeout(t);
   }, []);
-
-  useEffect(() => {
-    if (hasVideo || reducedMotion || slides.length < 2) return;
-    const t = window.setInterval(() => {
-      setSlide((s) => (s + 1) % slides.length);
-    }, 7000);
-    return () => window.clearInterval(t);
-  }, [hasVideo, reducedMotion, slides.length, slide]);
 
   return (
     <section
@@ -52,7 +42,7 @@ export function Hero() {
             loop
             playsInline
             preload="auto"
-            poster={slides[0]?.src}
+            poster={images.dark.src}
             onCanPlay={(e) => {
               const el = e.currentTarget;
               el.defaultMuted = true;
@@ -66,29 +56,32 @@ export function Hero() {
             <source src={site.hero.video} />
           </video>
         ) : (
-          slides.map((item, i) => (
-            <div
-              key={item.src}
-              className="absolute inset-0 transition-opacity duration-[1.2s]"
-              style={{ opacity: i === slide ? 1 : 0 }}
-              aria-hidden={i !== slide}
-            >
+          <>
+            <div className="absolute inset-0 hidden dark:block">
               <SmartImage
-                src={item.src}
-                alt={item.alt}
+                src={images.dark.src}
+                alt={images.dark.alt}
                 width={1920}
                 height={1080}
-                priority={i === 0}
-                className={`h-full w-full object-cover ${
-                  reducedMotion ? "" : "animate-[ken-burns_16s_ease-in-out_infinite_alternate]"
-                }`}
+                priority
+                className="h-full w-full object-cover object-[72%_center]"
               />
             </div>
-          ))
+            <div className="absolute inset-0 dark:hidden">
+              <SmartImage
+                src={images.light.src}
+                alt={images.light.alt}
+                width={1920}
+                height={1080}
+                priority
+                className="h-full w-full object-cover object-[72%_center]"
+              />
+            </div>
+          </>
         )}
 
-        {/* Text-side shade: bottom on mobile, left on desktop. The rest of the photo stays untouched. */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent md:bg-gradient-to-r md:from-black/85 md:via-black/45 md:to-transparent" />
+        {/* Text-side shade: stronger on the light collage, lighter on the already-dark one. */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent md:bg-gradient-to-r md:from-black/82 md:via-black/45 md:to-transparent dark:from-black/80 dark:via-black/35 dark:to-transparent dark:md:from-black/68 dark:md:via-black/28 dark:md:to-transparent" />
         {/* Keeps the navbar readable over bright photos */}
         <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/55 to-transparent" />
       </div>
@@ -148,7 +141,7 @@ export function Hero() {
         </div>
       </div>
 
-      {/* ───────── Bottom bar: badges, slide control, Instagram ───────── */}
+      {/* ───────── Bottom bar: badges, Instagram ───────── */}
       <div className="absolute inset-x-0 bottom-0 z-10 border-t border-white/15 bg-gradient-to-t from-black/75 to-black/30 backdrop-blur-md">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-5 py-4 pb-[calc(1rem+env(safe-area-inset-bottom))] sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
           <ul className="-mx-5 flex gap-2 overflow-x-auto px-5 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
@@ -162,36 +155,17 @@ export function Hero() {
             ))}
           </ul>
 
-          <div className="flex items-center justify-between gap-5 md:justify-end">
-            {showDots && (
-              <div className="flex items-center gap-2" role="group" aria-label="Hero slides">
-                {slides.map((item, i) => (
-                  <button
-                    key={item.src}
-                    type="button"
-                    onClick={() => setSlide(i)}
-                    aria-label={`Show slide ${i + 1} of ${slides.length}`}
-                    aria-current={i === slide}
-                    className={`h-1.5 rounded-full transition-all duration-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E3C06F] ${
-                      i === slide ? "w-8 bg-[#E3C06F]" : "w-3 bg-white/45 hover:bg-white/75"
-                    }`}
-                  />
-                ))}
-              </div>
-            )}
-
-            <a
-              href={site.instagram.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/35 px-4 py-2 text-xs font-semibold whitespace-nowrap text-white transition hover:border-[#E3C06F] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E3C06F]"
-            >
-              <InstagramIcon className="h-4 w-4 shrink-0" />
-              <span>{site.instagram.handle}</span>
-              <span className="h-3 w-px bg-white/35" aria-hidden="true" />
-              <span className="font-normal text-white/80">{site.instagram.followersLabel}</span>
-            </a>
-          </div>
+          <a
+            href={site.instagram.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 self-end rounded-full border border-white/25 bg-black/35 px-4 py-2 text-xs font-semibold whitespace-nowrap text-white transition hover:border-[#E3C06F] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E3C06F] md:self-auto"
+          >
+            <InstagramIcon className="h-4 w-4 shrink-0" />
+            <span>{site.instagram.handle}</span>
+            <span className="h-3 w-px bg-white/35" aria-hidden="true" />
+            <span className="font-normal text-white/80">{site.instagram.followersLabel}</span>
+          </a>
         </div>
       </div>
     </section>

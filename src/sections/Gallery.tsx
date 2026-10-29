@@ -36,21 +36,23 @@ export function Gallery() {
       <div className="w-full">
         <SectionHeader label={site.gallery.label} title={site.gallery.title} />
         <div className="tab-scroller mt-5">
-          {site.gallery.filters.map((f) => (
-            <button
-              key={f.id}
-              type="button"
-              onClick={() => setFilter(f.id)}
-              className={cn(
-                "min-h-11 shrink-0 rounded-full border px-4 text-xs font-semibold uppercase tracking-[0.16em]",
-                filter === f.id
-                  ? "border-[var(--gold)] bg-gold-grad text-[#0B0B0B]"
-                  : "border-[var(--border)] text-muted-foreground",
-              )}
-            >
-              {f.label}
-            </button>
-          ))}
+          {site.gallery.filters
+            .filter((f) => f.id === "all" || site.gallery.items.some((item) => item.category === f.id))
+            .map((f) => (
+              <button
+                key={f.id}
+                type="button"
+                onClick={() => setFilter(f.id)}
+                className={cn(
+                  "min-h-11 shrink-0 rounded-full border px-4 text-xs font-semibold uppercase tracking-[0.16em]",
+                  filter === f.id
+                    ? "border-[var(--gold)] bg-gold-grad text-[#0B0B0B]"
+                    : "border-[var(--border)] text-muted-foreground",
+                )}
+              >
+                {f.label}
+              </button>
+            ))}
         </div>
 
         <div className="masonry mt-10">
