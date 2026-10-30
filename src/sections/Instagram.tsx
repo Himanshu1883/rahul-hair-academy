@@ -38,8 +38,20 @@ export function Instagram() {
           </div>
         ) : null}
 
-        <div className="mt-5 flex justify-center">
+        <div className="mt-5 flex flex-col items-center gap-3">
           <IgAccounts iconClassName="h-10 w-10" />
+          <a
+            href={site.instagram.statsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-center text-sm text-muted-foreground transition hover:text-[var(--gold)]"
+          >
+            <span className="font-semibold text-foreground">{site.instagram.statsHandle}</span>
+            <span className="mx-2 text-[var(--gold)]">·</span>
+            {site.instagram.followersLabel}
+            <span className="mx-2 text-[var(--gold)]">·</span>
+            {site.instagram.followingLabel}
+          </a>
         </div>
       </div>
     </section>

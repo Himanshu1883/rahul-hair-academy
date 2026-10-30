@@ -45,17 +45,6 @@ export function buildJsonLd() {
     provider: { "@id": academyId },
     educationalLevel: course.level,
     ...(isoDuration(course.duration) ? { timeToComplete: isoDuration(course.duration) } : {}),
-    ...("feeAmount" in course
-      ? {
-          offers: {
-            "@type": "Offer",
-            price: course.feeAmount,
-            priceCurrency: "INR",
-            availability: "https://schema.org/InStock",
-            url: absoluteUrl(`/courses/${course.slug}`),
-          },
-        }
-      : {}),
   }));
 
   const faqs = [...site.faq.academy, ...site.faq.salon].map((item) => ({
@@ -82,7 +71,6 @@ export function buildJsonLd() {
       image,
       description: site.seo.description,
       telephone: phone || undefined,
-      priceRange: "₹₹",
       address,
       geo: {
         "@type": "GeoCoordinates",

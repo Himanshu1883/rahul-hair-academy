@@ -1,4 +1,4 @@
-import { Award, Check, Clock, MapPin, Sparkles, Wallet } from "lucide-react";
+import { Award, Check, Clock, MapPin, Sparkles } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 import { SiteChrome } from "@/components/chrome/SiteChrome";
@@ -48,12 +48,9 @@ export function CoursePage({ course }: { course: Course }) {
             </h1>
             <div className="mt-5 h-px w-20 bg-gradient-to-r from-[#E3C06F] to-transparent sm:w-24" />
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/85 sm:text-base md:text-lg">{course.teaser}</p>
-            <div className="mt-6 flex flex-wrap items-end gap-x-6 gap-y-2">
-              <p className="font-display text-3xl gold-text-shimmer sm:text-4xl">{course.fee}</p>
-              <p className="text-sm text-white/70">
-                {course.duration} · {course.mode}
-              </p>
-            </div>
+            <p className="mt-6 text-sm text-white/70">
+              {course.duration} · {course.mode}
+            </p>
             <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <Magnetic className="w-full sm:w-auto">
                 <button type="button" className="btn-gold w-full sm:w-auto" onClick={() => goToEnrol(course.id)}>
@@ -84,10 +81,9 @@ export function CoursePage({ course }: { course: Course }) {
 
       <section className="section-y px-4 md:px-8 lg:px-12">
         <SectionHeader label={site.courses.label} title={site.ui.courseOverview} />
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {[
             { icon: Clock, label: "Duration", value: `${course.duration} · ${course.schedule}` },
-            { icon: Wallet, label: "Course Fee", value: course.fee },
             { icon: MapPin, label: "Location", value: site.courses.promo.location },
             { icon: Sparkles, label: "Eligibility", value: site.ui.limitedSeats },
           ].map((item) => (

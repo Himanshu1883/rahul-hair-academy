@@ -156,13 +156,13 @@ export function Hero() {
           </ul>
 
           <a
-            href={site.instagram.url}
+            href={site.instagram.statsUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 self-end rounded-full border border-white/25 bg-black/35 px-4 py-2 text-xs font-semibold whitespace-nowrap text-white transition hover:border-[#E3C06F] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E3C06F] md:self-auto"
           >
             <InstagramIcon className="h-4 w-4 shrink-0" />
-            <span>{site.instagram.handle}</span>
+            <span>{site.instagram.statsHandle}</span>
             <span className="h-3 w-px bg-white/35" aria-hidden="true" />
             <span className="font-normal text-white/80">{site.instagram.followersLabel}</span>
           </a>

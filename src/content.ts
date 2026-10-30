@@ -176,10 +176,13 @@ export const site = {
     ],
     handle: "@rahul_hairacademy",
     url: "https://www.instagram.com/rahul_hairacademy/",
-    // Editable stats — do NOT hardcode live numbers anywhere else
-    followersLabel: "1.5K+ Followers",
+    // Counts from @rahulkumar7874kkc — do NOT hardcode live numbers anywhere else
+    statsHandle: "@rahulkumar7874kkc",
+    statsUrl: "https://www.instagram.com/rahulkumar7874kkc/",
+    followersLabel: "26.3K Followers",
+    followingLabel: "1,266 Following",
     postsLabel: "47 Posts",
-    bioLine: "Where Passion Meets Hair Education ✨",
+    bioLine: "Inspiring artists & Impressing clients since 2006",
   },
 
   contact: {
@@ -267,7 +270,7 @@ export const site = {
       { value: 500, suffix: "+", label: "Students Trained" },
       { value: 4, suffix: "", label: "Courses" },
       { value: 5, suffix: "+", label: "Years of Experience" },
-      { value: 1.5, suffix: "K+", label: "Instagram Followers" },
+      { value: 26.3, suffix: "K", label: "Instagram Followers" },
     ],
   },
 
@@ -314,7 +317,7 @@ export const site = {
         teaser: "A colouring masterclass plus a live practical workshop — theory, formulation and hands-on work in two intensive days.",
         seoTitle: "Hair Colour Course in Dwarka | 2-Day Masterclass",
         seoDescription:
-          "2-day hair colour masterclass in Dwarka Sector 7 — theory, formulation, live demo and hands-on workshop. ₹12,999. Certificate. Rahul Hair Academy, Ramphal Chowk.",
+          "2-day hair colour masterclass in Dwarka Sector 7 — theory, formulation, live demo and hands-on workshop. Certificate. Rahul Hair Academy, Ramphal Chowk.",
         syllabus: [
           "Hair Analysis for Colour",
           "Global Colour Theory & Formulation",
@@ -400,7 +403,7 @@ export const site = {
         teaser: "In-depth hair chemistry, advanced colour, smoothing, keratin and botox — four weeks of live practical training.",
         seoTitle: "4 Weeks Chemical Hair Course in Dwarka | Keratin & Colour",
         seoDescription:
-          "4-week advance chemical course in Dwarka — colour, keratin, smoothing, botox and nanoplasty with live practicals. ₹39,999. Certificate and job assistance.",
+          "4-week advance chemical course in Dwarka — colour, keratin, smoothing, botox and nanoplasty with live practicals. Certificate and job assistance.",
         syllabus: [
           "In-Depth Theory of Hair Structure & Chemistry",
           "Product Knowledge (Global Brands)",
@@ -486,7 +489,7 @@ export const site = {
         teaser: "Basic to advance chemical expertise plus hair-cut mastery — colour, smoothing, keratin and professional cutting across 12 weeks.",
         seoTitle: "12 Weeks Hair Cut & Chemical Course | Dwarka Sector 7",
         seoDescription:
-          "12-week chemical and hair-cut course in Dwarka Sector 7 — colour, keratin, cutting and finishing. ₹74,999. Government-affiliated certificate, 100% job assistance.",
+          "12-week chemical and hair-cut course in Dwarka Sector 7 — colour, keratin, cutting and finishing. Government-affiliated certificate, 100% job assistance.",
         syllabus: [
           "Complete Knowledge of Hair Structure & Chemistry",
           "Hair Analysis, pH Balance, Porosity, Patch Test",
@@ -608,7 +611,7 @@ export const site = {
         teaser: "A one-week chemical intensive — colour, smoothing, keratin, botox, perming and scalp care, with a practical assessment.",
         seoTitle: "7 Days Chemical Hair Course in Dwarka | Rahul Hair Academy",
         seoDescription:
-          "7-day advance chemical course in Dwarka — colour, keratin, smoothing, botox, perming and scalp care. ₹24,999. Live practicals and certificate.",
+          "7-day advance chemical course in Dwarka — colour, keratin, smoothing, botox, perming and scalp care. Live practicals and certificate.",
         syllabus: [
           "Complete Chemical Knowledge of Hair",
           "Advanced Hair Analysis",
@@ -700,7 +703,6 @@ export const site = {
       columns: ["2-Day Colour", "7 Days Chemical", "4 Weeks Chemical", "12 Weeks Chemical & Cut"],
       rows: [
         { label: "Duration", values: ["2 days", "7 days", "4 weeks", "12 weeks"] },
-        { label: "Fee", values: ["₹12,999/-", "₹24,999/-", "₹39,999/-", "₹74,999/-"] },
         { label: "Colour training", values: ["✓ Masterclass", "✓", "✓ Advance", "✓"] },
         { label: "Chemical training", values: ["—", "✓ Intensive", "✓ Advance", "✓ Basic to advance"] },
         { label: "Hair cutting", values: ["—", "—", "—", "✓ Basic to advance"] },
@@ -720,10 +722,10 @@ export const site = {
         title: "Choose your programme",
         text: "Start where you are. A 2-day colour masterclass, a 7-day or 4-week chemical intensive, or the 12-week chemical and hair-cut path — all offline in Dwarka Sector 7.",
         points: [
-          "2 Days Masterclass + Workshop — ₹12,999/-",
-          "7 Days Advance Chemical — ₹24,999/-",
-          "4 Weeks Advance Chemical — ₹39,999/-",
-          "12 Weeks Chemical & Hair Cut — ₹74,999/-",
+          "2 Days Masterclass + Workshop",
+          "7 Days Advance Chemical",
+          "4 Weeks Advance Chemical",
+          "12 Weeks Chemical & Hair Cut",
         ],
         image: workMensCut,
         isStock: false,
@@ -1012,7 +1014,7 @@ export const site = {
     academy: [
       { q: "Who can join the academy?", a: "Hair stylists, salon professionals, students, and anyone passionate about hair. Start with the 2-day colour masterclass, then 7-day or 4-week chemical intensives, or the 12-week chemical and hair-cut programme." },
       { q: "How long are the courses?", a: "2 days (colour masterclass + workshop), 7 days (advance chemical), 4 weeks (advance chemical) or 12 weeks (chemical and hair cut). Academy hours are Monday to Saturday, 10:00 AM – 5:00 PM." },
-      { q: "What are the fees? Are instalments available?", a: "2 Days Masterclass + Workshop is ₹12,999/-, 7 Days Advance Chemical is ₹24,999/-, 4 Weeks Advance Chemical is ₹39,999/-, and 12 Weeks Chemical & Hair Cut is ₹74,999/-. Call or WhatsApp 09582557260 for batch dates and any instalment options." },
+      { q: "What are the fees? Are instalments available?", a: "Fees and any instalment options are shared on enquiry. Call or WhatsApp 09582557260 for the current batch fee and start date." },
       { q: "Do I get a certificate?", a: "Yes — a government-affiliated certificate on successful completion, with 100% job assistance on every programme." },
       { q: "Is a kit included?", a: "Training is 100% practical with academy products on the floor. Ask us if you want a personal toolkit quote for the chair." },
       { q: "When do new batches start?", a: "Seats are limited per batch. Send an enrolment enquiry and we will share the next start date." },

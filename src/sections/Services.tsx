@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import { PlaceholderText } from "@/components/site/PlaceholderText";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { useSite } from "@/hooks/site-context";
@@ -42,12 +41,9 @@ export function Services() {
           {group?.services.map((svc) => (
             <div key={`${tab}-${svc.name}`} className="flex flex-col gap-2 px-4 py-2.5 sm:flex-row sm:items-center sm:justify-between md:px-6">
               <p className="font-display text-base">{svc.name}</p>
-              <div className="flex items-center justify-between gap-4 sm:justify-end">
-                <PlaceholderText value={svc.price} className="text-sm" />
-                <button type="button" className="btn-outline-gold min-h-9 px-3 text-[0.65rem]" onClick={() => goToBooking(svc.name)}>
-                  {site.ui.bookThis}
-                </button>
-              </div>
+              <button type="button" className="btn-outline-gold min-h-9 w-fit px-3 text-[0.65rem]" onClick={() => goToBooking(svc.name)}>
+                {site.ui.bookThis}
+              </button>
             </div>
           ))}
         </Reveal>

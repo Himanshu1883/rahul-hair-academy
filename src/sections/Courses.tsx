@@ -53,8 +53,7 @@ export function Courses() {
                       {course.title}
                     </h3>
                     <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">{course.teaser}</p>
-                    <p className="mt-4 font-display text-3xl gold-text-shimmer">{course.fee}</p>
-                    <p className="mt-1 text-xs text-muted-foreground">{course.schedule}</p>
+                    <p className="mt-4 text-xs text-muted-foreground">{course.schedule}</p>
                     <div className="mt-5 flex flex-wrap gap-2">
                       {course.features.slice(0, 4).map((feature) => (
                         <span
