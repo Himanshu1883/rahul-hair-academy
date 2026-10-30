@@ -2,6 +2,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 
 import { getCourseBySlug, site } from "@/content";
 import { CoursePage } from "@/sections/CoursePage";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/courses/$slug")({
   loader: ({ params }) => {
@@ -11,16 +12,11 @@ export const Route = createFileRoute("/courses/$slug")({
   },
   head: ({ loaderData }) => {
     const course = loaderData?.course;
-    const title = course ? `${course.title} | ${site.brand}` : site.seo.title;
-    const description = course?.teaser ?? site.seo.description;
-    return {
-      meta: [
-        { title },
-        { name: "description", content: description },
-        { property: "og:title", content: title },
-        { property: "og:description", content: description },
-      ],
-    };
+    return pageHead({
+      title: course?.seoTitle ?? site.seo.title,
+      description: course?.seoDescription ?? site.seo.description,
+      path: course ? `/courses/${course.slug}` : "/",
+    });
   },
   component: CourseRoute,
 });

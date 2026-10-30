@@ -87,15 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
       { title: site.seo.title },
       { name: "description", content: site.seo.description },
-      { name: "keywords", content: site.seo.keywords },
       { name: "theme-color", content: site.seo.themeColorDark },
-      { name: "author", content: site.brand },
-      { property: "og:title", content: site.seo.title },
-      { property: "og:description", content: site.seo.description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: site.seo.title },
-      { name: "twitter:description", content: site.seo.description },
     ],
     links: [
       {
@@ -114,7 +106,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en-IN" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />
         <HeadContent />

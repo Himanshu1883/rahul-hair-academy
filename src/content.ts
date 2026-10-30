@@ -69,11 +69,14 @@ export const site = {
   brochureUrl: "", // e.g. "/brochure.pdf" — hide the Download Brochure button while empty
 
   seo: {
-    title: "Rahul Hair Academy | Professional Hair Courses & Premium Salon in Dwarka, Delhi",
+    siteUrl: "https://rahulhairacademy.com",
+    title: "Hair Academy in Dwarka Sector 7 | Colour, Chemical & Cut Courses",
     description:
-      "Where Passion Meets Hair Education. Professional hair courses from Basic to Advanced, plus a premium salon. Learn. Create. Master Hair — enrol at Rahul Hair Academy.",
+      "Rahul Hair Academy, Palam Extension, Dwarka Sector 7. 2-day colour masterclass, 7-day and 4-week chemical courses, 12-week hair-cut training. Certificate and 100% job assistance.",
     keywords:
-      "hair academy, hair courses, chemical hair course, hair colouring, keratin, hair cutting course, Rahul Hair Academy, Dwarka",
+      "hair academy Dwarka, hair academy Dwarka Sector 7, hair colour course Delhi, chemical hair course Dwarka, keratin course Dwarka, hair cutting course Delhi, hair salon Ramphal Chowk, Palam Extension hair academy, Rahul Hair Academy, professional hair training Dwarka",
+    ogImage: "/og.jpg",
+    locale: "en_IN",
     themeColorDark: "#0B0B0B",
     themeColorLight: "#FFFFFF",
   },
@@ -303,6 +306,9 @@ export const site = {
         fee: "₹12,999/-",
         feeAmount: 12999,
         teaser: "A colouring masterclass plus a live practical workshop — theory, formulation and hands-on work in two intensive days.",
+        seoTitle: "Hair Colour Course in Dwarka | 2-Day Masterclass",
+        seoDescription:
+          "2-day hair colour masterclass in Dwarka Sector 7 — theory, formulation, live demo and hands-on workshop. ₹12,999. Certificate. Rahul Hair Academy, Ramphal Chowk.",
         syllabus: [
           "Hair Analysis for Colour",
           "Global Colour Theory & Formulation",
@@ -373,6 +379,9 @@ export const site = {
         fee: "₹39,999/-",
         feeAmount: 39999,
         teaser: "In-depth hair chemistry, advanced colour, smoothing, keratin and botox — four weeks of live practical training.",
+        seoTitle: "4 Weeks Chemical Hair Course in Dwarka | Keratin & Colour",
+        seoDescription:
+          "4-week advance chemical course in Dwarka — colour, keratin, smoothing, botox and nanoplasty with live practicals. ₹39,999. Certificate and job assistance.",
         syllabus: [
           "In-Depth Theory of Hair Structure & Chemistry",
           "Product Knowledge (Global Brands)",
@@ -448,6 +457,9 @@ export const site = {
         fee: "₹74,999/-",
         feeAmount: 74999,
         teaser: "Basic to advance chemical expertise plus hair-cut mastery — colour, smoothing, keratin and professional cutting across 12 weeks.",
+        seoTitle: "12 Weeks Hair Cut & Chemical Course | Dwarka Sector 7",
+        seoDescription:
+          "12-week chemical and hair-cut course in Dwarka Sector 7 — colour, keratin, cutting and finishing. ₹74,999. Government-affiliated certificate, 100% job assistance.",
         syllabus: [
           "Complete Knowledge of Hair Structure & Chemistry",
           "Hair Analysis, pH Balance, Porosity, Patch Test",
@@ -554,6 +566,9 @@ export const site = {
         fee: "₹24,999/-",
         feeAmount: 24999,
         teaser: "A one-week chemical intensive — colour, smoothing, keratin, botox, perming and scalp care, with a practical assessment.",
+        seoTitle: "7 Days Chemical Hair Course in Dwarka | Rahul Hair Academy",
+        seoDescription:
+          "7-day advance chemical course in Dwarka — colour, keratin, smoothing, botox, perming and scalp care. ₹24,999. Live practicals and certificate.",
         syllabus: [
           "Complete Chemical Knowledge of Hair",
           "Advanced Hair Analysis",
