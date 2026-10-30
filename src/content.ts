@@ -21,7 +21,7 @@ import colourBurgundy from "@/assets/brand/colour-burgundy.jpg";
 import classCaramelWaves from "@/assets/brand/class-caramel-waves.jpg";
 import classHoneyWaves from "@/assets/brand/class-honey-waves.jpg";
 import awardsRahul from "@/assets/brand/awards-rahul.jpg";
-import colourCopperSalon from "@/assets/brand/colour-copper-salon.jpg";
+import colourCopperSalon from "@/assets/brand/colour-copper-salon.png";
 import colourBurgundySalon from "@/assets/brand/colour-burgundy-salon.jpg";
 import courseHero2d from "@/assets/brand/course-hero-2d.jpg";
 import courseHero4w from "@/assets/brand/course-hero-4w.jpg";
