@@ -36,12 +36,12 @@ export function Courses() {
                       </span>
                     ) : null}
                     <SmartImage
-                      src={course.image}
+                      src={course.heroImage}
                       alt={course.title}
                       width={960}
                       height={720}
                       priority
-                      className="aspect-[16/10] h-full min-h-[16rem] w-full object-cover lg:aspect-auto lg:min-h-[22rem]"
+                      className="aspect-[16/10] h-full min-h-[16rem] w-full object-cover object-[78%_center] lg:aspect-auto lg:min-h-[22rem]"
                     />
                   </Link>
 

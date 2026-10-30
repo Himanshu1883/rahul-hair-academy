@@ -23,9 +23,10 @@ import classHoneyWaves from "@/assets/brand/class-honey-waves.jpg";
 import awardsRahul from "@/assets/brand/awards-rahul.jpg";
 import colourCopperSalon from "@/assets/brand/colour-copper-salon.jpg";
 import colourBurgundySalon from "@/assets/brand/colour-burgundy-salon.jpg";
-import courseColour from "@/assets/stock/course-colour.jpg";
-import courseTreatments from "@/assets/stock/course-treatments.jpg";
-import courseMaster from "@/assets/stock/course-master.jpg";
+import courseHero2d from "@/assets/brand/course-hero-2d.jpg";
+import courseHero4w from "@/assets/brand/course-hero-4w.jpg";
+import courseHero7d from "@/assets/brand/course-hero-7d.jpg";
+import courseHero12w from "@/assets/brand/course-hero-12w.jpg";
 
 export const brandAssets = { logoFull, logoMonogram };
 
@@ -122,6 +123,8 @@ export const site = {
     whatsapp: "WhatsApp",
     onEnquiry: "On enquiry",
     whatYoullLearn: "What you’ll learn",
+    inTheSalon: "IN THE SALON",
+    watchTheWork: "Watch the Work",
     kitIncluded: "Kit included",
     certificate: "Certificate",
     addToCalendar: "Add to Calendar",
@@ -298,8 +301,9 @@ export const site = {
         navLabel: "2 Days Masterclass + Workshop",
         title: "2 Days Masterclass + Workshop",
         level: "crash",
-        image: courseColour,
-        isStock: true, // REPLACE WITH CLIENT PHOTO
+        image: courseHero2d,
+        heroImage: courseHero2d,
+        isStock: false,
         duration: "2 days",
         schedule: "Mon–Sat, 10:00 AM – 5:00 PM",
         mode: "Offline",
@@ -357,6 +361,18 @@ export const site = {
           },
         ],
         extraBlocks: [],
+        videos: [
+          {
+            src: "/videos/team-passion-colour.mp4",
+            headline: "Master the Art of Hair Colour",
+            subline: "Turn your passion into a professional colour skill — theory, formulation and live work.",
+          },
+          {
+            src: "/videos/reel-dull-to-dazzling.mp4",
+            headline: "From Dull to Dazzling",
+            subline: "The right developer and formulation make the difference. Practise it on the workshop day.",
+          },
+        ],
         benefits: ["Expert Training", "100% Practical Knowledge", "Colour Confidence", "International Techniques", "Certificate of Completion"],
         whoCanJoin: ["Hair Stylists", "Salon Professionals", "Students", "Anyone passionate about colour"],
         footerLine: "LEARN THE COLOUR · PRACTISE THE CRAFT · OWN THE RESULT",
@@ -371,8 +387,9 @@ export const site = {
         navLabel: "4 Weeks Advance Chemical",
         title: "4 Weeks Advance Chemical Course",
         level: "advanced",
-        image: courseColour,
-        isStock: true, // REPLACE WITH CLIENT PHOTO
+        image: courseHero4w,
+        heroImage: courseHero4w,
+        isStock: false,
         duration: "4 weeks",
         schedule: "Mon–Sat, 10:00 AM – 5:00 PM",
         mode: "Offline",
@@ -435,6 +452,13 @@ export const site = {
           },
         ],
         extraBlocks: [],
+        videos: [
+          {
+            src: "/videos/ba-cool-new-hair.mp4",
+            headline: "Unlock Cool New Hair",
+            subline: "Fashion colour and chemical finish — the look this four-week course trains you to create.",
+          },
+        ],
         benefits: ["Expert Training", "100% Practical Knowledge", "Boost Your Career", "Start Your Own Salon", "International Techniques"],
         whoCanJoin: ["Hair Stylists", "Salon Professionals", "Students", "Anyone passionate about hair"],
         footerLine: "LEARN THE CHEMISTRY · MASTER THE TECHNIQUE · TRANSFORM YOUR CAREER",
@@ -449,8 +473,9 @@ export const site = {
         navLabel: "12 Weeks Chemical & Hair Cut",
         title: "12 Weeks Basic to Advance Chemical & Hair Cut",
         level: "professional",
-        image: courseMaster,
-        isStock: true, // REPLACE WITH CLIENT PHOTO
+        image: courseHero12w,
+        heroImage: courseHero12w,
+        isStock: false,
         duration: "12 weeks",
         schedule: "Mon–Sat, 10:00 AM – 5:00 PM",
         mode: "Offline",
@@ -496,6 +521,18 @@ export const site = {
               "Styling & Finishing",
               "Look Creation",
             ],
+          },
+        ],
+        videos: [
+          {
+            src: "/videos/reel-technique-transformation.mp4",
+            headline: "From Technique to Transformation",
+            subline: "Every detail matters — colour, chemical and finish across twelve weeks.",
+          },
+          {
+            src: "/videos/reel-dull-to-stunning.mp4",
+            headline: "From Dull to Stunning",
+            subline: "Professional cutting and styling — the hair-cut block this programme is built around.",
           },
         ],
         plan: [
@@ -558,8 +595,9 @@ export const site = {
         navLabel: "7 Days Advance Chemical",
         title: "7 Days Advance Chemical Course",
         level: "crash",
-        image: courseTreatments,
-        isStock: true, // REPLACE WITH CLIENT PHOTO
+        image: courseHero7d,
+        heroImage: courseHero7d,
+        isStock: false,
         duration: "7 days",
         schedule: "Mon–Sat, 10:00 AM – 5:00 PM",
         mode: "Offline",
@@ -640,6 +678,13 @@ export const site = {
           },
         ],
         extraBlocks: [],
+        videos: [
+          {
+            src: "/videos/course-live-class.mp4",
+            headline: "Live Training on the Floor",
+            subline: "Seven intensive days of chemical work — watch how a live class actually runs.",
+          },
+        ],
         benefits: ["Expert Training", "100% Practical Knowledge", "Boost Your Career", "Start Your Own Salon", "International Techniques", "Certificate of Completion"],
         whoCanJoin: ["Hair Stylists", "Salon Professionals", "Students", "Anyone passionate about hair"],
         footerLine: "LEARN THE CHEMISTRY · MASTER THE TECHNIQUE · TRANSFORM YOUR CAREER",

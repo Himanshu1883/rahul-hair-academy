@@ -8,7 +8,7 @@ export function preloadSiteMedia() {
     site.hero.images.light.src,
     site.founder.portrait,
     site.about.classroomImage,
-    ...site.courses.items.map((c) => c.image),
+    ...site.courses.items.map((c) => c.heroImage),
     ...site.gallery.items.map((g) => g.src),
     ...site.journey.stages.map((s) => s.image),
     ...site.team.members.map((m) => m.photo).filter(Boolean),

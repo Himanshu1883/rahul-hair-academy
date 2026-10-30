@@ -2,6 +2,7 @@ import { Award, Check, Clock, MapPin, Sparkles, Wallet } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 import { SiteChrome } from "@/components/chrome/SiteChrome";
+import { CourseClips } from "@/components/site/CourseClips";
 import { Magnetic } from "@/components/site/Magnetic";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
@@ -16,58 +17,58 @@ export function CoursePage({ course }: { course: Course }) {
 
   return (
     <SiteChrome>
-      <section className="relative flex min-h-svh flex-col justify-end overflow-hidden pt-[calc(5.5rem+env(safe-area-inset-top))] pb-10 lg:h-svh lg:max-h-svh lg:justify-center lg:pb-16">
-        <div className="absolute inset-0">
+      <section className="course-hero relative isolate flex min-h-[92svh] items-end overflow-hidden bg-black text-white md:min-h-svh md:items-center">
+        <div className="absolute inset-0 -z-10">
           <SmartImage
-            src={course.image}
+            src={course.heroImage}
             alt={course.title}
             width={1920}
             height={1080}
             priority
-            className="hero-media h-full w-full object-cover"
+            className="h-full w-full object-cover object-[78%_center] max-md:object-[72%_30%]"
           />
-          <div className="hero-scrim absolute inset-0" />
-          <div className="hero-vignette absolute inset-0" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/72 to-black/20 md:bg-gradient-to-r md:from-black/90 md:via-black/50 md:to-transparent" />
+          <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/55 to-transparent" />
         </div>
 
-        <div className="relative z-10 mt-3 flex justify-center px-4">
-          <p className="w-fit max-w-[calc(100%-1.5rem)] rounded-full bg-gold-grad px-5 py-2 text-center text-[0.58rem] font-bold tracking-[0.14em] text-[#0B0B0B] sm:px-7 sm:text-[0.62rem]">
-            {site.courses.promo.banner}
-          </p>
-        </div>
-
-        <div className="relative z-10 w-full px-4 md:px-8 lg:px-12">
-          <p className="section-label">
-            <span className="h-px w-8 bg-current" />
-            {site.courses.promo.tagline}
-          </p>
-          <p className="mt-2 text-[0.68rem] font-semibold tracking-[0.2em] text-[var(--gold)] uppercase">
-            {site.courses.promo.subtitle}
-          </p>
-          <h1 className="mt-3 max-w-4xl font-display text-[clamp(2rem,6vw,4.4rem)] leading-[0.95]">
-            {course.title}
-          </h1>
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">{course.teaser}</p>
-          <div className="mt-5 flex flex-wrap items-end gap-x-6 gap-y-2">
-            <p className="font-display text-3xl gold-text-shimmer sm:text-4xl">{course.fee}</p>
-            <p className="text-sm text-muted-foreground">
-              {course.duration} · {course.mode}
+        <div className="relative z-10 w-full px-5 pb-36 pt-[calc(6rem+env(safe-area-inset-top))] sm:px-8 md:px-10 md:pb-20 lg:px-16 xl:px-20">
+          <div className="max-w-[38rem] text-left">
+            <p className="inline-block max-w-full rounded-full bg-gold-grad px-4 py-1.5 text-[0.55rem] font-bold tracking-[0.12em] text-[#0B0B0B] sm:px-5 sm:text-[0.62rem] sm:tracking-[0.14em]">
+              {site.courses.promo.banner}
             </p>
-          </div>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Magnetic>
-              <button type="button" className="btn-gold" onClick={() => goToEnrol(course.id)}>
-                {site.ui.enrolNow}
-              </button>
-            </Magnetic>
-            <a
-              href={waLink(`Hi ${site.brand}, I want to enrol in ${course.title}.`)}
-              className="btn-outline-gold"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {site.ui.whatsapp}
-            </a>
+            <p className="mt-5 flex items-center gap-3 text-[0.58rem] font-semibold tracking-[0.14em] text-[#E3C06F] uppercase sm:text-[0.68rem] sm:tracking-[0.22em]">
+              <span className="h-px w-7 shrink-0 bg-[#E3C06F]/80 sm:w-10" />
+              <span className="min-w-0 leading-relaxed">{site.courses.promo.tagline}</span>
+            </p>
+            <p className="mt-2 text-[0.62rem] font-semibold tracking-[0.18em] text-white/70 uppercase sm:text-[0.68rem] sm:tracking-[0.2em]">
+              {site.courses.promo.subtitle}
+            </p>
+            <h1 className="mt-3 font-display text-[clamp(1.85rem,7.4vw,4.35rem)] leading-[1.02] tracking-[-0.02em] [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
+              {course.title}
+            </h1>
+            <div className="mt-5 h-px w-20 bg-gradient-to-r from-[#E3C06F] to-transparent sm:w-24" />
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/85 sm:text-base md:text-lg">{course.teaser}</p>
+            <div className="mt-6 flex flex-wrap items-end gap-x-6 gap-y-2">
+              <p className="font-display text-3xl gold-text-shimmer sm:text-4xl">{course.fee}</p>
+              <p className="text-sm text-white/70">
+                {course.duration} · {course.mode}
+              </p>
+            </div>
+            <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <Magnetic className="w-full sm:w-auto">
+                <button type="button" className="btn-gold w-full sm:w-auto" onClick={() => goToEnrol(course.id)}>
+                  {site.ui.enrolNow}
+                </button>
+              </Magnetic>
+              <a
+                href={waLink(`Hi ${site.brand}, I want to enrol in ${course.title}.`)}
+                className="btn-outline-gold w-full bg-black/25 backdrop-blur-sm sm:w-auto"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {site.ui.whatsapp}
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -180,6 +181,8 @@ export function CoursePage({ course }: { course: Course }) {
           ))}
         </section>
       ) : null}
+
+      <CourseClips clips={course.videos} onEnrol={() => goToEnrol(course.id)} />
 
       <section className="section-y px-4 md:px-8 lg:px-12">
         <SectionHeader label={site.ui.courseBenefits} title={site.ui.courseBenefits} />

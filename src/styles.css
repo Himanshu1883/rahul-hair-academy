@@ -327,6 +327,16 @@ html.light .nav-link:hover {
   opacity: 1;
 }
 
+html .course-hero .btn-outline-gold,
+html.light .course-hero .btn-outline-gold {
+  color: #f5f0e6;
+  border-color: #e3c06f;
+}
+html .course-hero .btn-outline-gold:hover,
+html.light .course-hero .btn-outline-gold:hover {
+  color: #0b0b0b;
+}
+
 @utility btn-ghost-gold {
   display: inline-flex;
   align-items: center;
