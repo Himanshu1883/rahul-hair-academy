@@ -7,6 +7,7 @@ export function preloadSiteMedia() {
     site.hero.images.dark.src,
     site.hero.images.light.src,
     site.founder.portrait,
+    site.about.image,
     site.about.classroomImage,
     ...site.courses.items.map((c) => c.heroImage),
     ...site.gallery.items.map((g) => g.src),

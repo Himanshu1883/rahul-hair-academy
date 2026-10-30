@@ -56,9 +56,9 @@ export function About() {
         <Reveal className="relative img-wipe mx-auto w-full max-w-lg lg:mx-0 lg:max-w-none">
           <div className="frame-gold overflow-hidden rounded-2xl bg-black">
             <SmartImage
-              src={site.founder.portrait}
-              alt={site.founder.name}
-              width={900}
+              src={site.about.image}
+              alt={`${site.founder.name} teaching on the salon floor`}
+              width={1600}
               height={1200}
               priority
               className="h-auto w-full object-contain"

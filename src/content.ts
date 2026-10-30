@@ -27,6 +27,7 @@ import courseHero2d from "@/assets/brand/course-hero-2d.jpg";
 import courseHero4w from "@/assets/brand/course-hero-4w.jpg";
 import courseHero7d from "@/assets/brand/course-hero-7d.jpg";
 import courseHero12w from "@/assets/brand/course-hero-12w.jpg";
+import aboutStylingSession from "@/assets/brand/about-styling-session.jpg";
 
 export const brandAssets = { logoFull, logoMonogram };
 
@@ -260,6 +261,7 @@ export const site = {
       "It grows through education — a 2-day colour masterclass, 7-day and 4-week chemical intensives, and a 12-week chemical plus hair-cut programme, practised on the floor until the science and the hands agree.",
       "It ends in mastery — a certificate, placement guidance, and a career that belongs to you.",
     ],
+    image: aboutStylingSession,
     classroomImage: salonFloor,
     stats: [
       { value: 500, suffix: "+", label: "Students Trained" },
