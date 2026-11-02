@@ -24,10 +24,11 @@ type SiteCtx = {
   activeSection: string;
   prefilledCourseId: string;
   prefilledService: string;
+  prefilledStaffId: string;
   goTo: (id: string) => void;
   goToEnrol: (courseId?: string) => void;
   goToCourse: (courseId: string) => void;
-  goToBooking: (service?: string) => void;
+  goToBooking: (opts?: { service?: string; staffId?: string }) => void;
 };
 
 const Ctx = createContext<SiteCtx | null>(null);
@@ -42,6 +43,7 @@ export function SiteProvider({ children }: { children: ReactNode }) {
   const [activeSection, setActiveSection] = useState("home");
   const [prefilledCourseId, setPrefilledCourseId] = useState("");
   const [prefilledService, setPrefilledService] = useState("");
+  const [prefilledStaffId, setPrefilledStaffId] = useState("");
 
   useEffect(() => {
     preloadSiteMedia();
@@ -98,7 +100,7 @@ export function SiteProvider({ children }: { children: ReactNode }) {
       setActiveSection(pathname.startsWith("/courses/") ? "courses" : "");
       return;
     }
-    const ids = ["home", "academy", "courses", "salon", "gallery", "reviews", "contact", "enrol"];
+    const ids = ["home", "academy", "courses", "salon", "booking", "gallery", "reviews", "contact", "enrol"];
     const els = ids
       .map((sectionId) => document.getElementById(sectionId))
       .filter((el): el is HTMLElement => !!el);
@@ -152,8 +154,9 @@ export function SiteProvider({ children }: { children: ReactNode }) {
   );
 
   const goToBooking = useCallback(
-    (service?: string) => {
-      if (service) setPrefilledService(service);
+    (opts?: { service?: string; staffId?: string }) => {
+      if (opts?.service) setPrefilledService(opts.service);
+      if (opts?.staffId) setPrefilledStaffId(opts.staffId);
       if (pathname === "/") {
         scrollToId("booking");
         return;
@@ -173,6 +176,7 @@ export function SiteProvider({ children }: { children: ReactNode }) {
       activeSection,
       prefilledCourseId,
       prefilledService,
+      prefilledStaffId,
       goTo,
       goToEnrol,
       goToCourse,
@@ -186,6 +190,7 @@ export function SiteProvider({ children }: { children: ReactNode }) {
       activeSection,
       prefilledCourseId,
       prefilledService,
+      prefilledStaffId,
       goTo,
       goToEnrol,
       goToCourse,

@@ -41,7 +41,7 @@ export function Services() {
           {group?.services.map((svc) => (
             <div key={`${tab}-${svc.name}`} className="flex flex-col gap-2 px-4 py-2.5 sm:flex-row sm:items-center sm:justify-between md:px-6">
               <p className="font-display text-base">{svc.name}</p>
-              <button type="button" className="btn-outline-gold min-h-9 w-fit px-3 text-[0.65rem]" onClick={() => goToBooking(svc.name)}>
+              <button type="button" className="btn-outline-gold min-h-9 w-fit px-3 text-[0.65rem]" onClick={() => goToBooking({ service: svc.name })}>
                 {site.ui.bookThis}
               </button>
             </div>

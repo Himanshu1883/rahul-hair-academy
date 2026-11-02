@@ -30,9 +30,9 @@ export function HomePage() {
       <BeforeAfter />
       <Services />
       <Team />
+      <Booking />
       <Certification />
       <Enrol />
-      {/* <Booking /> */}
       <Instagram />
       <Testimonials />
       <FAQ />

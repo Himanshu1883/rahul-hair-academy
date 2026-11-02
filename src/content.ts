@@ -115,6 +115,8 @@ export const site = {
     limitedSeats: "Limited Seats Available",
     enrolThisCourse: "Enrol in this course",
     bookThis: "Book this",
+    bookStylist: "Book this stylist",
+    bookAnother: "Book another appointment",
     followIg: "Follow on Instagram",
     chooseInstagram: "Choose Instagram",
     downloadBrochure: "Download Brochure",
@@ -870,10 +872,11 @@ export const site = {
     },
     members: [
       {
+        id: "rahul",
         name: "Rahul",
         role: "Founder & Master Educator",
         specialities: "Cutting • Colour • Education",
-        instagram: "https://www.instagram.com/rahul_hairacademy/",
+        instagram: "https://www.instagram.com/rahulkumar7874kkc/",
         photo: founderAtChair,
       },
     ],
@@ -919,7 +922,11 @@ export const site = {
   booking: {
     label: "APPOINTMENTS",
     title: "Book the Chair",
-    note: "Final confirmation on WhatsApp.",
+    note: "Pick a stylist, service and slot. Final confirmation on WhatsApp.",
+    staffLabel: "Choose your stylist",
+    anyStaff: "Any available stylist",
+    anyStaffNote: "We’ll seat you with the first free chair.",
+    closedSunday: "We’re closed on Sunday. Please pick Monday to Saturday.",
     timeSlots: ["10:00 AM", "11:30 AM", "1:00 PM", "3:00 PM", "4:30 PM"],
     successTitle: "Appointment Requested!",
     successText: "Final confirmation on WhatsApp.",
@@ -1022,7 +1029,7 @@ export const site = {
       { q: "Is placement help available?", a: "Yes — 100% job assistance on every programme, plus the skills to join a salon or start your own." },
     ],
     salon: [
-      { q: "How do I book an appointment?", a: "Use the booking form above or message us on WhatsApp — you’ll get a confirmation within academy hours." },
+      { q: "How do I book an appointment?", a: "Choose a stylist on the team or in the booking form, pick a service and time, then send the request. You’ll get a confirmation on WhatsApp within academy hours." },
       { q: "Which products do you use?", a: "Professional salon products are used in live-model training and salon services. Ask the academy for the current range when you visit or enquire." },
       { q: "What are your timings?", a: "Monday to Saturday, 10:00 AM – 5:00 PM. Closed on Sunday." },
     ],
@@ -1042,6 +1049,10 @@ export function getCourseById(id: string) {
 
 export function getCourseBySlug(slug: string) {
   return site.courses.items.find((c) => c.slug === slug);
+}
+
+export function getTeamMemberById(id: string) {
+  return site.team.members.find((m) => m.id === id);
 }
 
 export function coursePath(slug: string) {

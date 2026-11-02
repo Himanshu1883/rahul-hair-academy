@@ -19,23 +19,25 @@ function stamp(date: Date) {
   return `${date.getFullYear()}${pad(date.getMonth() + 1)}${pad(date.getDate())}T${pad(date.getHours())}${pad(date.getMinutes())}00`;
 }
 
-export function googleCalendarUrl(service: string, date: string, slot: string) {
+export function googleCalendarUrl(service: string, date: string, slot: string, stylist?: string) {
   const start = parseSlot(date, slot);
   const end = new Date(start.getTime() + 60 * 60 * 1000);
+  const withWho = stylist ? `${service} with ${stylist}` : service;
   const params = new URLSearchParams({
     action: "TEMPLATE",
-    text: `${site.brand} — ${service}`,
+    text: `${site.brand} — ${withWho}`,
     dates: `${stamp(start)}/${stamp(end)}`,
-    details: `${site.booking.note}\n${site.instagram.url}`,
+    details: `${stylist ? `Stylist: ${stylist}\n` : ""}${site.booking.note}\n${site.instagram.url}`,
     location: site.contact.address,
     ctz: "Asia/Kolkata",
   });
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }
 
-export function downloadIcs(service: string, date: string, slot: string, name: string) {
+export function downloadIcs(service: string, date: string, slot: string, name: string, stylist?: string) {
   const start = parseSlot(date, slot);
   const end = new Date(start.getTime() + 60 * 60 * 1000);
+  const withWho = stylist ? `${service} with ${stylist}` : service;
   const ics = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
@@ -45,8 +47,8 @@ export function downloadIcs(service: string, date: string, slot: string, name: s
     `DTSTAMP:${stamp(new Date())}`,
     `DTSTART:${stamp(start)}`,
     `DTEND:${stamp(end)}`,
-    `SUMMARY:${site.brand} — ${service}`,
-    `DESCRIPTION:Appointment for ${name}. ${site.booking.note}`,
+    `SUMMARY:${site.brand} — ${withWho}`,
+    `DESCRIPTION:Appointment for ${name}${stylist ? ` with ${stylist}` : ""}. ${site.booking.note}`,
     `LOCATION:${site.contact.address}`,
     "END:VEVENT",
     "END:VCALENDAR",
