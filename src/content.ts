@@ -28,6 +28,20 @@ import courseHero4w from "@/assets/brand/course-hero-4w.jpg";
 import courseHero7d from "@/assets/brand/course-hero-7d.jpg";
 import courseHero12w from "@/assets/brand/course-hero-12w.jpg";
 import aboutStylingSession from "@/assets/brand/about-styling-session.jpg";
+import academyStation from "@/assets/brand/academy-station.jpg";
+import academyKit from "@/assets/brand/academy-kit.jpg";
+import academyClass from "@/assets/brand/academy-class.jpg";
+import academyTools from "@/assets/brand/academy-tools.jpg";
+import academyTeaching from "@/assets/brand/academy-teaching.jpg";
+import academyColourLab from "@/assets/brand/academy-colour-lab.jpg";
+import academyClassroom from "@/assets/brand/academy-classroom.jpg";
+import academyPractical from "@/assets/brand/academy-practical.jpg";
+import academyDemo from "@/assets/brand/academy-demo.jpg";
+import academyTheory from "@/assets/brand/academy-theory.jpg";
+import academyOffice from "@/assets/brand/academy-office.jpg";
+import academyStudio from "@/assets/brand/academy-studio.jpg";
+import rahulPortrait from "@/assets/brand/rahul-portrait.jpg";
+import academyTeam from "@/assets/brand/academy-team.jpg";
 
 export const brandAssets = { logoFull, logoMonogram };
 
@@ -208,13 +222,15 @@ export const site = {
       "https://www.google.com/maps/place/Rahul+hair+Academy/@28.5849844,77.0724583,17z/data=!4m6!3m5!1s0x390d1bcdefc14f73:0x693fe2e0edc0b8f0!8m2!3d28.5849844!4d77.0724583!16s%2Fg%2F11z9c1q0qh",
     lat: 28.5849844,
     lng: 77.0724583,
+    image: academyOffice,
+    imageAlt: "Reception desk at Rahul Hair Academy, Dwarka Sector 7",
   },
 
   founder: {
     name: "Rahul",
     title: "Founder & Master Educator",
     bio: "Rahul is the founder and master educator at Rahul Hair Academy in Dwarka, Delhi. He built the academy to turn passion for hair into a profession — from a 2-day colour masterclass to 12-week chemical and hair-cut training, with live practicals, a government-affiliated certificate, and 100% job assistance.",
-    portrait: founderAtChair,
+    portrait: rahulPortrait,
   },
 
   hero: {
@@ -266,8 +282,8 @@ export const site = {
       "It grows through education — a 2-day colour masterclass, 7-day and 4-week chemical intensives, and a 12-week chemical plus hair-cut programme, practised on the floor until the science and the hands agree.",
       "It ends in mastery — a certificate, placement guidance, and a career that belongs to you.",
     ],
-    image: aboutStylingSession,
-    classroomImage: salonFloor,
+    image: academyTeaching,
+    classroomImage: academyClassroom,
     stats: [
       { value: 500, suffix: "+", label: "Students Trained" },
       { value: 4, suffix: "", label: "Courses" },
@@ -286,6 +302,12 @@ export const site = {
       { icon: "award", title: "Industry-Experienced Trainers", text: "Learn from professionals who work the chair every day." },
       { icon: "sparkles", title: "100% Practical Training", text: "Live demos, hands-on practice and client consultation — not just theory on a slide." },
       { icon: "graduation", title: "Certificate, Job & Affiliation", text: "Government-affiliated certification, 100% job assistance, and the support to start earning behind the chair." },
+    ],
+    floor: [
+      { src: academyStation, alt: "Mannequin training station with dryer and iron at Rahul Hair Academy" },
+      { src: academyKit, alt: "Professional brush and comb kit used in class" },
+      { src: academyTools, alt: "Sectioning clips and tail comb on the academy bench" },
+      { src: academyColourLab, alt: "Colour chart, bleach and developer on the formulation bench" },
     ],
   },
 
@@ -729,7 +751,7 @@ export const site = {
           "4 Weeks Advance Chemical",
           "12 Weeks Chemical & Hair Cut",
         ],
-        image: workMensCut,
+        image: academyClass,
         isStock: false,
       },
       {
@@ -742,7 +764,7 @@ export const site = {
           "Smoothing, rebonding, keratin, botox and nanoplasty",
           "Product knowledge from professional ranges",
         ],
-        image: classCaramelWaves,
+        image: academyTheory,
         isStock: false,
       },
       {
@@ -755,7 +777,7 @@ export const site = {
           "Hair cutting and styling on the 12-week programme",
           "Client consultation and problem solving",
         ],
-        image: founderAtChair,
+        image: academyPractical,
         isStock: false,
       },
       {
@@ -788,8 +810,17 @@ export const site = {
       { src: salonFloor, alt: "Colour service on the salon floor", category: "Colour", isStock: false },
       { src: colourBurgundy, alt: "Burgundy colour and waves", category: "Colour", isStock: false },
       { src: classHoneyWaves, alt: "Honey waves from academy training", category: "Class", isStock: false },
+      { src: academyClass, alt: "Students in a live theory class at Rahul Hair Academy", category: "Class", isStock: false },
+      { src: academyTeam, alt: "Rahul Hair Academy team together in the classroom", category: "Class", isStock: false },
+      { src: academyDemo, alt: "Rahul demonstrating cut placement on a training mannequin", category: "Class", isStock: false },
+      { src: academyTeaching, alt: "Rahul teaching sectioning at the academy whiteboard", category: "Class", isStock: false },
+      { src: founderAtChair, alt: "Rahul working behind the chair", category: "Class", isStock: false },
+      { src: academyClassroom, alt: "The academy classroom — stations, mannequins and live-class seating", category: "Academy", isStock: false },
+      { src: academyStation, alt: "Mannequin station set for blow-dry and curl practice", category: "Academy", isStock: false },
+      { src: academyStudio, alt: "Lit dressing station at Rahul Hair Academy", category: "Academy", isStock: false },
       { src: colourCopperSalon, alt: "Copper waves finished outside the salon", category: "Colour", isStock: false },
       { src: colourBurgundySalon, alt: "Burgundy colour on the salon floor", category: "Colour", isStock: false },
+      { src: aboutStylingSession, alt: "Finished colour and styling outside the academy salon", category: "Colour", isStock: false },
     ],
     filters: [
       { id: "all", label: "All" },
@@ -797,6 +828,7 @@ export const site = {
       { id: "Colour", label: "Colour" },
       { id: "Men", label: "Men" },
       { id: "Class", label: "Class" },
+      { id: "Academy", label: "Academy" },
     ],
   },
 
@@ -865,6 +897,8 @@ export const site = {
   team: {
     label: "THE TEAM",
     title: "Masters Behind the Chair",
+    groupPhoto: academyTeam,
+    groupAlt: "Rahul Hair Academy team and students on the classroom floor",
     reel: {
       video: "/videos/team-passion-colour.mp4",
       headline: "Passion into a Professional Skill",
@@ -877,7 +911,7 @@ export const site = {
         role: "Founder & Master Educator",
         specialities: "Cutting • Colour • Education",
         instagram: "https://www.instagram.com/rahulkumar7874kkc/",
-        photo: founderAtChair,
+        photo: rahulPortrait,
       },
     ],
   },
@@ -917,6 +951,8 @@ export const site = {
     batches: "Limited seats per batch — next start date on enquiry",
     successTitle: "Enquiry Sent!",
     successText: "Our team will contact you shortly.",
+    image: academyStudio,
+    imageAlt: "Counselling and dressing station at Rahul Hair Academy",
   },
 
   booking: {

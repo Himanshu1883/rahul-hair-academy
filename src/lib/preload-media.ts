@@ -13,8 +13,12 @@ export function preloadSiteMedia() {
     ...site.gallery.items.map((g) => g.src),
     ...site.journey.stages.map((s) => s.image),
     ...site.team.members.map((m) => m.photo).filter(Boolean),
+    site.team.groupPhoto,
     site.services.image,
     site.certification.certificateImage,
+    site.contact.image,
+    site.enrol.image,
+    ...site.highlights.floor.map((shot) => shot.src),
   ].filter(Boolean);
 
   for (const src of new Set(images)) {

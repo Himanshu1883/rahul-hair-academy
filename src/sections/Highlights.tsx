@@ -2,6 +2,7 @@ import { Award, GraduationCap, Layers, Scissors, Sparkles, Users, type LucideIco
 
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
+import { SmartImage } from "@/components/site/SmartImage";
 import { TiltCard } from "@/components/site/TiltCard";
 import { site } from "@/content";
 
@@ -39,6 +40,15 @@ export function Highlights() {
               </Reveal>
             );
           })}
+        </div>
+        <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
+          {site.highlights.floor.map((shot, i) => (
+            <Reveal key={shot.src} delay={i * 60}>
+              <div className="frame-gold overflow-hidden rounded-2xl">
+                <SmartImage src={shot.src} alt={shot.alt} width={800} height={600} className="aspect-[4/3] object-cover" />
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

@@ -18,6 +18,17 @@ export function Team() {
     <section id="team" className="section-y px-4 md:px-8 lg:px-12">
       <div className="w-full">
         <SectionHeader label={site.team.label} title={site.team.title} align="center" />
+        <Reveal className="mt-6">
+          <div className="frame-gold overflow-hidden rounded-2xl">
+            <SmartImage
+              src={site.team.groupPhoto}
+              alt={site.team.groupAlt}
+              width={1600}
+              height={1067}
+              className="aspect-[16/10] w-full object-cover object-[center_40%]"
+            />
+          </div>
+        </Reveal>
         <div className="mt-6 grid items-stretch gap-4 md:grid-cols-2">
           <Reveal>
             <TeamReel unmuted={unmuted} onToggleMute={() => setUnmuted((v) => !v)} />

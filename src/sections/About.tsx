@@ -57,7 +57,7 @@ export function About() {
           <div className="frame-gold overflow-hidden rounded-2xl bg-black">
             <SmartImage
               src={site.about.image}
-              alt={`${site.founder.name} teaching on the salon floor`}
+              alt={`${site.founder.name} teaching a live class at Rahul Hair Academy`}
               width={1600}
               height={1200}
               priority
@@ -65,7 +65,7 @@ export function About() {
             />
           </div>
           <div className="absolute right-3 bottom-3 w-24 overflow-hidden rounded-2xl border border-[var(--border)] shadow-[var(--shadow-lux)] sm:w-28 md:w-32">
-            <SmartImage src={site.about.classroomImage} alt="Salon floor at Rahul Hair Academy" width={480} height={360} />
+            <SmartImage src={site.about.classroomImage} alt="Academy classroom with stations and mannequins" width={480} height={360} />
           </div>
           <div className="absolute left-2 top-3 h-14 w-14 sm:h-20 sm:w-20">
             <div className="badge-spin relative h-full w-full">

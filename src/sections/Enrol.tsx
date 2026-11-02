@@ -7,6 +7,7 @@ import { Magnetic } from "@/components/site/Magnetic";
 import { PlaceholderText } from "@/components/site/PlaceholderText";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
+import { SmartImage } from "@/components/site/SmartImage";
 import { useSite } from "@/hooks/site-context";
 import { isValidInPhone, openWhatsApp, postFormCopy } from "@/lib/forms";
 import { site, telLink, waLink } from "@/content";
@@ -113,6 +114,15 @@ export function Enrol() {
               {site.ui.downloadBrochure}
             </a>
           ) : null}
+          <div className="frame-gold mt-6 overflow-hidden rounded-2xl">
+            <SmartImage
+              src={site.enrol.image}
+              alt={site.enrol.imageAlt}
+              width={1200}
+              height={800}
+              className="aspect-[16/10] object-cover"
+            />
+          </div>
         </Reveal>
 
         <Reveal className="card-lux relative p-5 sm:p-6 md:p-8">

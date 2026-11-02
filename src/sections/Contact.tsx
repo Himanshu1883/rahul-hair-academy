@@ -4,6 +4,7 @@ import { WhatsAppIcon } from "@/components/brand/SocialIcons";
 
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeader } from "@/components/site/SectionHeader";
+import { SmartImage } from "@/components/site/SmartImage";
 import { site, telLink, waLink } from "@/content";
 import { mapsEmbedSrc } from "@/lib/forms";
 
@@ -33,6 +34,17 @@ export function Contact() {
               </a>
             </li>
           </ul>
+          <Reveal className="mt-6">
+            <div className="frame-gold overflow-hidden rounded-2xl">
+              <SmartImage
+                src={site.contact.image}
+                alt={site.contact.imageAlt}
+                width={1200}
+                height={800}
+                className="aspect-[16/10] object-cover"
+              />
+            </div>
+          </Reveal>
         </div>
         <Reveal>
           {embed ? (
