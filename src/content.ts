@@ -288,9 +288,9 @@ export const site = {
     image: academyTeaching,
     classroomImage: academyClassroom,
     stats: [
-      { value: 500, suffix: "+", label: "Students Trained" },
+      { value: 2000, suffix: "+", label: "Students Trained" },
       { value: 4, suffix: "", label: "Courses" },
-      { value: 5, suffix: "+", label: "Years of Experience" },
+      { value: 22, suffix: "+", label: "Years of Experience" },
       { value: 26.3, suffix: "K", label: "Instagram Followers" },
     ],
   },
