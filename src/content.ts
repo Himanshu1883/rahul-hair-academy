@@ -142,6 +142,9 @@ export const site = {
     whatYoullLearn: "What you’ll learn",
     inTheSalon: "IN THE SALON",
     watchTheWork: "Watch the Work",
+    insideTheClassroom: "INSIDE THE CLASSROOM",
+    learnOnTheFloor: "Learn on the Floor",
+    learnOnTheFloorLead: "Theory at the board. Practice at the station. Real academy training in Dwarka.",
     kitIncluded: "Kit included",
     certificate: "Certificate",
     addToCalendar: "Add to Calendar",
@@ -390,6 +393,18 @@ export const site = {
           },
         ],
         extraBlocks: [],
+        classroomPhotos: [
+          {
+            src: academyColourLab,
+            alt: "Colour chart, bleach and developer on the formulation bench",
+            caption: "Colour formulation",
+          },
+          {
+            src: academyDemo,
+            alt: "Rahul demonstrating cut and colour placement on a training mannequin",
+            caption: "Live colour demo",
+          },
+        ],
         videos: [
           {
             src: "/videos/team-passion-colour.mp4",
@@ -481,6 +496,18 @@ export const site = {
           },
         ],
         extraBlocks: [],
+        classroomPhotos: [
+          {
+            src: academyTeaching,
+            alt: "Rahul teaching sectioning at the academy whiteboard",
+            caption: "Theory on the board",
+          },
+          {
+            src: academyPractical,
+            alt: "Hands-on chemical demonstration with students at the station",
+            caption: "Hands-on chemical practice",
+          },
+        ],
         videos: [
           {
             src: "/videos/ba-cool-new-hair.mp4",
@@ -550,6 +577,18 @@ export const site = {
               "Styling & Finishing",
               "Look Creation",
             ],
+          },
+        ],
+        classroomPhotos: [
+          {
+            src: academyClassroom,
+            alt: "Academy classroom with stations, mannequins and live-class seating",
+            caption: "Full classroom floor",
+          },
+          {
+            src: academyTheory,
+            alt: "Rahul teaching hair structure at the whiteboard with students",
+            caption: "Cut & chemical theory",
           },
         ],
         videos: [
@@ -707,6 +746,18 @@ export const site = {
           },
         ],
         extraBlocks: [],
+        classroomPhotos: [
+          {
+            src: academyClass,
+            alt: "Students in a live theory class at Rahul Hair Academy",
+            caption: "Live batch in session",
+          },
+          {
+            src: academyStation,
+            alt: "Mannequin training station set for blow-dry and chemical practice",
+            caption: "Practice station",
+          },
+        ],
         videos: [
           {
             src: "/videos/course-live-class.mp4",

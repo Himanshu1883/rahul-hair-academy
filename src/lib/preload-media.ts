@@ -10,6 +10,7 @@ export function preloadSiteMedia() {
     site.about.image,
     site.about.classroomImage,
     ...site.courses.items.map((c) => c.heroImage),
+    ...site.courses.items.flatMap((c) => c.classroomPhotos.map((p) => p.src)),
     ...site.gallery.items.map((g) => g.src),
     ...site.journey.stages.map((s) => s.image),
     ...site.team.members.map((m) => m.photo).filter(Boolean),

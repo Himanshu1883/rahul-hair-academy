@@ -2,6 +2,7 @@ import { Award, Check, Clock, MapPin, Sparkles } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 import { SiteChrome } from "@/components/chrome/SiteChrome";
+import { CourseClassroom } from "@/components/site/CourseClassroom";
 import { CourseClips } from "@/components/site/CourseClips";
 import { Magnetic } from "@/components/site/Magnetic";
 import { Reveal } from "@/components/site/Reveal";
@@ -135,6 +136,8 @@ export function CoursePage({ course }: { course: Course }) {
           ))}
         </ul>
       </section>
+
+      <CourseClassroom photos={course.classroomPhotos} />
 
       <section className="section-y px-4 md:px-8 lg:px-12">
         <SectionHeader label={site.ui.trainingPlan} title={course.planTitle} />
